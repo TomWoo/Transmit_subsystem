@@ -1,11 +1,84 @@
-C:/Users/User/OneDrive/Duke/7_Fall_2016/ECE_559/Transmit_port/discard_logic.vhd {1 {vcom -work work -2008 -explicit -stats=none C:/Users/User/OneDrive/Duke/7_Fall_2016/ECE_559/Transmit_port/discard_logic.vhd
+C:/Users/User/OneDrive/Duke/7_Fall_2016/ECE_559/Transmit_port/tests/testbench_high_priority_long_packet.v {1 {vlog -work work -stats=none C:/Users/User/OneDrive/Duke/7_Fall_2016/ECE_559/Transmit_port/tests/testbench_high_priority_long_packet.v
+Model Technology ModelSim ALTERA vlog 10.4d Compiler 2015.12 Dec 30 2015
+-- Compiling module testbench_high_priority_long_packet
+
+Top level modules:
+	testbench_high_priority_long_packet
+
+} {} {}} C:/Users/User/OneDrive/Duke/7_Fall_2016/ECE_559/Transmit_port/FIFO_1.vhd {1 {vcom -work work -2008 -explicit -stats=none C:/Users/User/OneDrive/Duke/7_Fall_2016/ECE_559/Transmit_port/FIFO_1.vhd
+Model Technology ModelSim ALTERA vcom 10.4d Compiler 2015.12 Dec 30 2015
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Compiling entity FIFO_1
+-- Compiling architecture SYN of fifo_1
+
+} {} {}} C:/Users/User/OneDrive/Duke/7_Fall_2016/ECE_559/Transmit_port/tests/testbench_short_hi.v {1 {vlog -work work -stats=none C:/Users/User/OneDrive/Duke/7_Fall_2016/ECE_559/Transmit_port/tests/testbench_short_hi.v
+Model Technology ModelSim ALTERA vlog 10.4d Compiler 2015.12 Dec 30 2015
+-- Compiling module testbench_short_hi
+
+Top level modules:
+	testbench_short_hi
+
+} {} {}} C:/Users/User/OneDrive/Duke/7_Fall_2016/ECE_559/Transmit_port/tests/testbench_long_hi.v {1 {vlog -work work -stats=none C:/Users/User/OneDrive/Duke/7_Fall_2016/ECE_559/Transmit_port/tests/testbench_long_hi.v
+Model Technology ModelSim ALTERA vlog 10.4d Compiler 2015.12 Dec 30 2015
+-- Compiling module testbench_long_hi
+
+Top level modules:
+	testbench_long_hi
+
+} {} {}} C:/Users/User/OneDrive/Duke/7_Fall_2016/ECE_559/Transmit_port/xmitTop.vhd {1 {vcom -work work -2008 -explicit -stats=none C:/Users/User/OneDrive/Duke/7_Fall_2016/ECE_559/Transmit_port/xmitTop.vhd
+Model Technology ModelSim ALTERA vcom 10.4d Compiler 2015.12 Dec 30 2015
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Compiling entity xmitTop
+-- Compiling architecture rtl of xmitTop
+
+} {} {}} C:/Users/User/OneDrive/Duke/7_Fall_2016/ECE_559/Transmit_port/out_FSM.vhd {1 {vcom -work work -2008 -explicit -stats=none C:/Users/User/OneDrive/Duke/7_Fall_2016/ECE_559/Transmit_port/out_FSM.vhd
 Model Technology ModelSim ALTERA vcom 10.4d Compiler 2015.12 Dec 30 2015
 -- Loading package STANDARD
 -- Loading package TEXTIO
 -- Loading package std_logic_1164
 -- Loading package NUMERIC_STD
--- Compiling entity discard_logic
--- Compiling architecture arch of discard_logic
+-- Compiling entity out_FSM
+-- Compiling architecture rtl of out_FSM
+
+} {} {}} C:/Users/User/OneDrive/Duke/7_Fall_2016/ECE_559/Transmit_port/dataFIFO.vhd {1 {vcom -work work -2008 -explicit -stats=none C:/Users/User/OneDrive/Duke/7_Fall_2016/ECE_559/Transmit_port/dataFIFO.vhd
+Model Technology ModelSim ALTERA vcom 10.4d Compiler 2015.12 Dec 30 2015
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Compiling entity dataFIFO
+-- Compiling architecture SYN of datafifo
+
+} {} {}} C:/Users/User/OneDrive/Duke/7_Fall_2016/ECE_559/Transmit_port/tests/testbench_single_frame.v {1 {vlog -work work -stats=none C:/Users/User/OneDrive/Duke/7_Fall_2016/ECE_559/Transmit_port/tests/testbench_single_frame.v
+Model Technology ModelSim ALTERA vlog 10.4d Compiler 2015.12 Dec 30 2015
+-- Compiling module testbench_single_frame
+
+Top level modules:
+	testbench_single_frame
+
+} {} {}} C:/Users/User/OneDrive/Duke/7_Fall_2016/ECE_559/Transmit_port/tests/testbench_10hi_lo.v {1 {vlog -work work -stats=none C:/Users/User/OneDrive/Duke/7_Fall_2016/ECE_559/Transmit_port/tests/testbench_10hi_lo.v
+Model Technology ModelSim ALTERA vlog 10.4d Compiler 2015.12 Dec 30 2015
+-- Compiling module testbench_10hi_lo
+
+Top level modules:
+	testbench_10hi_lo
+
+} {} {}} C:/Users/User/OneDrive/Duke/7_Fall_2016/ECE_559/Transmit_port/tests/testbench_10lo_hi.v {1 {vlog -work work -stats=none C:/Users/User/OneDrive/Duke/7_Fall_2016/ECE_559/Transmit_port/tests/testbench_10lo_hi.v
+Model Technology ModelSim ALTERA vlog 10.4d Compiler 2015.12 Dec 30 2015
+-- Compiling module testbench_10lo_hi
+
+Top level modules:
+	testbench_10lo_hi
+
+} {} {}} C:/Users/User/OneDrive/Duke/7_Fall_2016/ECE_559/Transmit_port/tests/testbench_diff_packet_lengths.v {1 {vlog -work work -stats=none C:/Users/User/OneDrive/Duke/7_Fall_2016/ECE_559/Transmit_port/tests/testbench_diff_packet_lengths.v
+Model Technology ModelSim ALTERA vlog 10.4d Compiler 2015.12 Dec 30 2015
+-- Compiling module testbench_diff_packet_lengths
+
+Top level modules:
+	testbench_diff_packet_lengths
 
 } {} {}} C:/Users/User/OneDrive/Duke/7_Fall_2016/ECE_559/Transmit_port/in_FSM.vhd {1 {vcom -work work -2008 -explicit -stats=none C:/Users/User/OneDrive/Duke/7_Fall_2016/ECE_559/Transmit_port/in_FSM.vhd
 Model Technology ModelSim ALTERA vcom 10.4d Compiler 2015.12 Dec 30 2015
@@ -16,35 +89,34 @@ Model Technology ModelSim ALTERA vcom 10.4d Compiler 2015.12 Dec 30 2015
 -- Compiling entity in_FSM
 -- Compiling architecture rtl of in_FSM
 
-} {} {}} C:/Users/User/OneDrive/Duke/7_Fall_2016/ECE_559/Transmit_port/FIFO_1.vhd {1 {vcom -work work -2008 -explicit -stats=none C:/Users/User/OneDrive/Duke/7_Fall_2016/ECE_559/Transmit_port/FIFO_1.vhd
-Model Technology ModelSim ALTERA vcom 10.4d Compiler 2015.12 Dec 30 2015
--- Loading package STANDARD
--- Loading package TEXTIO
--- Loading package std_logic_1164
--- Compiling entity FIFO_1
--- Compiling architecture SYN of fifo_1
-
-} {} {}} C:/Users/User/OneDrive/Duke/7_Fall_2016/ECE_559/Transmit_port/tests/testbench_high_priority_long_packet.v {1 {vlog -work work -stats=none C:/Users/User/OneDrive/Duke/7_Fall_2016/ECE_559/Transmit_port/tests/testbench_high_priority_long_packet.v
+} {} {}} C:/Users/User/OneDrive/Duke/7_Fall_2016/ECE_559/Transmit_port/tests/testbench_increments.v {1 {vlog -work work -stats=none C:/Users/User/OneDrive/Duke/7_Fall_2016/ECE_559/Transmit_port/tests/testbench_increments.v
 Model Technology ModelSim ALTERA vlog 10.4d Compiler 2015.12 Dec 30 2015
--- Compiling module testbench_high_priority_long_packet
+-- Compiling module testbench_increments
 
 Top level modules:
-	testbench_high_priority_long_packet
+	testbench_increments
 
-} {} {}} C:/Users/User/OneDrive/Duke/7_Fall_2016/ECE_559/Transmit_port/xmitTop.vhd {1 {vcom -work work -2008 -explicit -stats=none C:/Users/User/OneDrive/Duke/7_Fall_2016/ECE_559/Transmit_port/xmitTop.vhd
+} {} {}} C:/Users/User/OneDrive/Duke/7_Fall_2016/ECE_559/Transmit_port/tests/testbench_short_lo.v {1 {vlog -work work -stats=none C:/Users/User/OneDrive/Duke/7_Fall_2016/ECE_559/Transmit_port/tests/testbench_short_lo.v
+Model Technology ModelSim ALTERA vlog 10.4d Compiler 2015.12 Dec 30 2015
+-- Compiling module testbench_short_lo
+
+Top level modules:
+	testbench_short_lo
+
+} {} {}} C:/Users/User/OneDrive/Duke/7_Fall_2016/ECE_559/Transmit_port/tests/testbench_long_lo.v {1 {vlog -work work -stats=none C:/Users/User/OneDrive/Duke/7_Fall_2016/ECE_559/Transmit_port/tests/testbench_long_lo.v
+Model Technology ModelSim ALTERA vlog 10.4d Compiler 2015.12 Dec 30 2015
+-- Compiling module testbench_long_lo
+
+Top level modules:
+	testbench_long_lo
+
+} {} {}} C:/Users/User/OneDrive/Duke/7_Fall_2016/ECE_559/Transmit_port/discard_logic.vhd {1 {vcom -work work -2008 -explicit -stats=none C:/Users/User/OneDrive/Duke/7_Fall_2016/ECE_559/Transmit_port/discard_logic.vhd
 Model Technology ModelSim ALTERA vcom 10.4d Compiler 2015.12 Dec 30 2015
 -- Loading package STANDARD
 -- Loading package TEXTIO
 -- Loading package std_logic_1164
--- Compiling entity xmitTop
--- Compiling architecture rtl of xmitTop
-
-} {} {}} C:/Users/User/OneDrive/Duke/7_Fall_2016/ECE_559/Transmit_port/dataFIFO.vhd {1 {vcom -work work -2008 -explicit -stats=none C:/Users/User/OneDrive/Duke/7_Fall_2016/ECE_559/Transmit_port/dataFIFO.vhd
-Model Technology ModelSim ALTERA vcom 10.4d Compiler 2015.12 Dec 30 2015
--- Loading package STANDARD
--- Loading package TEXTIO
--- Loading package std_logic_1164
--- Compiling entity dataFIFO
--- Compiling architecture SYN of datafifo
+-- Loading package NUMERIC_STD
+-- Compiling entity discard_logic
+-- Compiling architecture arch of discard_logic
 
 } {} {}}

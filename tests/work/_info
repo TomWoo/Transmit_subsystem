@@ -128,7 +128,7 @@ R25
 R11
 R12
 Ein_fsm
-Z26 w1481793666
+Z26 w1481803629
 R14
 R1
 R2
@@ -141,9 +141,9 @@ VWP<CkN_ATMzm7S4]50`GQ2
 !s100 7aNQX<iQ9S2V[EY=5Z9PQ0
 R6
 33
-Z29 !s110 1481795341
+Z29 !s110 1481803761
 !i10b 1
-Z30 !s108 1481795340.000000
+Z30 !s108 1481803761.000000
 Z31 !s90 -reportprogress|300|-work|work|-2008|-explicit|-stats=none|C:/Users/User/OneDrive/Duke/7_Fall_2016/ECE_559/Transmit_port/in_FSM.vhd|
 Z32 !s107 C:/Users/User/OneDrive/Duke/7_Fall_2016/ECE_559/Transmit_port/in_FSM.vhd|
 !i113 1
@@ -156,8 +156,8 @@ R2
 DEx4 work 6 in_fsm 0 22 WP<CkN_ATMzm7S4]50`GQ2
 l39
 L28
-V5l]Q<e=Z@[ERdLO4XJ[<51
-!s100 H`]_T6gH>YBeK=4jQinBS0
+VkTf;;F`:YmUiQi>Q<NzGM0
+!s100 k0IPaT:kzAZW4;K6WLgG=1
 R6
 33
 R29
@@ -194,7 +194,7 @@ Artl
 R14
 R1
 R2
-Z40 DEx4 work 7 out_fsm 0 22 R<2X7OzGXXPXGZI]QJoG83
+DEx4 work 7 out_fsm 0 22 R<2X7OzGXXPXGZI]QJoG83
 l43
 L27
 VOz`Ib:b?ci>U_GYA4FNGK2
@@ -209,18 +209,98 @@ R39
 !i113 1
 R11
 R12
+vtestbench_10hi_lo
+Z40 !s110 1481797702
+!i10b 1
+!s100 iS]VN[j=Ml2oQQOdOL<Tl2
+I9[I:>U1jJF6nh^1_CbE2T0
+Z41 VDg1SIo80bB@j0V0VzS_@n1
+R3
+Z42 w1481777145
+8C:/Users/User/OneDrive/Duke/7_Fall_2016/ECE_559/Transmit_port/tests/testbench_10hi_lo.v
+FC:/Users/User/OneDrive/Duke/7_Fall_2016/ECE_559/Transmit_port/tests/testbench_10hi_lo.v
+L0 5
+Z43 OV;L;10.4d;61
+r1
+!s85 0
+31
+Z44 !s108 1481797702.000000
+!s107 C:/Users/User/OneDrive/Duke/7_Fall_2016/ECE_559/Transmit_port/tests/testbench_10hi_lo.v|
+!s90 -reportprogress|300|-work|work|-stats=none|C:/Users/User/OneDrive/Duke/7_Fall_2016/ECE_559/Transmit_port/tests/testbench_10hi_lo.v|
+!i113 1
+Z45 o-work work
+vtestbench_10lo_hi
+R40
+!i10b 1
+!s100 fPzcP^05jGBMOf5HA95850
+IX48P`Q>f@`^BW?=[]WNlI3
+R41
+R3
+R42
+8C:/Users/User/OneDrive/Duke/7_Fall_2016/ECE_559/Transmit_port/tests/testbench_10lo_hi.v
+FC:/Users/User/OneDrive/Duke/7_Fall_2016/ECE_559/Transmit_port/tests/testbench_10lo_hi.v
+L0 5
+R43
+r1
+!s85 0
+31
+R44
+!s107 C:/Users/User/OneDrive/Duke/7_Fall_2016/ECE_559/Transmit_port/tests/testbench_10lo_hi.v|
+!s90 -reportprogress|300|-work|work|-stats=none|C:/Users/User/OneDrive/Duke/7_Fall_2016/ECE_559/Transmit_port/tests/testbench_10lo_hi.v|
+!i113 1
+R45
+vtestbench_alternating_priorities
+!s110 1481802195
+!i10b 1
+!s100 @lWUc8nDT3UV6L?483ACA0
+I:I``3kVbii<zW9m^]]iH22
+R41
+R3
+w1481802192
+8C:/Users/User/OneDrive/Duke/7_Fall_2016/ECE_559/Transmit_port/tests/testbench_alternating_priorities.v
+FC:/Users/User/OneDrive/Duke/7_Fall_2016/ECE_559/Transmit_port/tests/testbench_alternating_priorities.v
+L0 5
+R43
+r1
+!s85 0
+31
+!s108 1481802195.000000
+!s107 C:/Users/User/OneDrive/Duke/7_Fall_2016/ECE_559/Transmit_port/tests/testbench_alternating_priorities.v|
+!s90 -reportprogress|300|-work|work|-stats=none|C:/Users/User/OneDrive/Duke/7_Fall_2016/ECE_559/Transmit_port/tests/testbench_alternating_priorities.v|
+!i113 1
+R45
+vtestbench_diff_packet_lengths
+R40
+!i10b 1
+!s100 2a7Cmo=ll4:eT7Ul6>SQY2
+Ih5Azg4hVbSOGKBU2`j9KQ0
+R41
+R3
+R42
+8C:/Users/User/OneDrive/Duke/7_Fall_2016/ECE_559/Transmit_port/tests/testbench_diff_packet_lengths.v
+FC:/Users/User/OneDrive/Duke/7_Fall_2016/ECE_559/Transmit_port/tests/testbench_diff_packet_lengths.v
+L0 4
+R43
+r1
+!s85 0
+31
+R44
+!s107 C:/Users/User/OneDrive/Duke/7_Fall_2016/ECE_559/Transmit_port/tests/testbench_diff_packet_lengths.v|
+!s90 -reportprogress|300|-work|work|-stats=none|C:/Users/User/OneDrive/Duke/7_Fall_2016/ECE_559/Transmit_port/tests/testbench_diff_packet_lengths.v|
+!i113 1
+R45
 vtestbench_high_priority_long_packet
 !s110 1481776383
 !i10b 1
 !s100 AlUX_4oo1DF`27AEO_QIc0
 Ica?b2U4Vo]2MCHJWlLkg52
-VDg1SIo80bB@j0V0VzS_@n1
+R41
 R3
 w1481681786
 8C:/Users/User/OneDrive/Duke/7_Fall_2016/ECE_559/Transmit_port/tests/testbench_high_priority_long_packet.v
 FC:/Users/User/OneDrive/Duke/7_Fall_2016/ECE_559/Transmit_port/tests/testbench_high_priority_long_packet.v
 L0 5
-OV;L;10.4d;61
+R43
 r1
 !s85 0
 31
@@ -228,25 +308,145 @@ r1
 !s107 C:/Users/User/OneDrive/Duke/7_Fall_2016/ECE_559/Transmit_port/tests/testbench_high_priority_long_packet.v|
 !s90 -reportprogress|300|-work|work|-stats=none|C:/Users/User/OneDrive/Duke/7_Fall_2016/ECE_559/Transmit_port/tests/testbench_high_priority_long_packet.v|
 !i113 1
-o-work work
+R45
+vtestbench_increments
+R40
+!i10b 1
+!s100 bci0bKOPYRO__o`IHa8hD1
+IV`YI?h?0zjM2EdHXBPESR1
+R41
+R3
+R42
+8C:/Users/User/OneDrive/Duke/7_Fall_2016/ECE_559/Transmit_port/tests/testbench_increments.v
+FC:/Users/User/OneDrive/Duke/7_Fall_2016/ECE_559/Transmit_port/tests/testbench_increments.v
+L0 5
+R43
+r1
+!s85 0
+31
+R44
+!s107 C:/Users/User/OneDrive/Duke/7_Fall_2016/ECE_559/Transmit_port/tests/testbench_increments.v|
+!s90 -reportprogress|300|-work|work|-stats=none|C:/Users/User/OneDrive/Duke/7_Fall_2016/ECE_559/Transmit_port/tests/testbench_increments.v|
+!i113 1
+R45
+vtestbench_long_hi
+R40
+!i10b 1
+!s100 LKiFDcSk]6@]6?UmaLTk@2
+I19gOd2SnE@hEZE9J<zXP^1
+R41
+R3
+R42
+8C:/Users/User/OneDrive/Duke/7_Fall_2016/ECE_559/Transmit_port/tests/testbench_long_hi.v
+FC:/Users/User/OneDrive/Duke/7_Fall_2016/ECE_559/Transmit_port/tests/testbench_long_hi.v
+L0 5
+R43
+r1
+!s85 0
+31
+R44
+!s107 C:/Users/User/OneDrive/Duke/7_Fall_2016/ECE_559/Transmit_port/tests/testbench_long_hi.v|
+!s90 -reportprogress|300|-work|work|-stats=none|C:/Users/User/OneDrive/Duke/7_Fall_2016/ECE_559/Transmit_port/tests/testbench_long_hi.v|
+!i113 1
+R45
+vtestbench_long_lo
+R40
+!i10b 1
+!s100 OUKDPXc<P:oJSNR;Pcz@K2
+ISaeUi>P7@8AHUKzaFXdP?1
+R41
+R3
+R42
+8C:/Users/User/OneDrive/Duke/7_Fall_2016/ECE_559/Transmit_port/tests/testbench_long_lo.v
+FC:/Users/User/OneDrive/Duke/7_Fall_2016/ECE_559/Transmit_port/tests/testbench_long_lo.v
+L0 5
+R43
+r1
+!s85 0
+31
+R44
+!s107 C:/Users/User/OneDrive/Duke/7_Fall_2016/ECE_559/Transmit_port/tests/testbench_long_lo.v|
+!s90 -reportprogress|300|-work|work|-stats=none|C:/Users/User/OneDrive/Duke/7_Fall_2016/ECE_559/Transmit_port/tests/testbench_long_lo.v|
+!i113 1
+R45
+vtestbench_short_hi
+R40
+!i10b 1
+!s100 hT[cYZc954K]l[^b>]Eac1
+IoYHj<2z[:Xc97m6k]8alS3
+R41
+R3
+R42
+8C:/Users/User/OneDrive/Duke/7_Fall_2016/ECE_559/Transmit_port/tests/testbench_short_hi.v
+FC:/Users/User/OneDrive/Duke/7_Fall_2016/ECE_559/Transmit_port/tests/testbench_short_hi.v
+L0 5
+R43
+r1
+!s85 0
+31
+R44
+!s107 C:/Users/User/OneDrive/Duke/7_Fall_2016/ECE_559/Transmit_port/tests/testbench_short_hi.v|
+!s90 -reportprogress|300|-work|work|-stats=none|C:/Users/User/OneDrive/Duke/7_Fall_2016/ECE_559/Transmit_port/tests/testbench_short_hi.v|
+!i113 1
+R45
+vtestbench_short_lo
+R29
+!i10b 1
+!s100 Z_4BNngbcOaa6U1U>KN]c3
+I@<iV8?:K^`fTNBDSkMTef3
+R41
+R3
+w1481803753
+8C:/Users/User/OneDrive/Duke/7_Fall_2016/ECE_559/Transmit_port/tests/testbench_short_lo.v
+FC:/Users/User/OneDrive/Duke/7_Fall_2016/ECE_559/Transmit_port/tests/testbench_short_lo.v
+L0 5
+R43
+r1
+!s85 0
+31
+R30
+!s107 C:/Users/User/OneDrive/Duke/7_Fall_2016/ECE_559/Transmit_port/tests/testbench_short_lo.v|
+!s90 -reportprogress|300|-work|work|-stats=none|C:/Users/User/OneDrive/Duke/7_Fall_2016/ECE_559/Transmit_port/tests/testbench_short_lo.v|
+!i113 1
+R45
+vtestbench_single_frame
+!s110 1481797703
+!i10b 1
+!s100 lji7ih1miIdnz[?8UWQXR3
+Iz0`djN17QPS_l8Nj^hBHY1
+R41
+R3
+R42
+8C:/Users/User/OneDrive/Duke/7_Fall_2016/ECE_559/Transmit_port/tests/testbench_single_frame.v
+FC:/Users/User/OneDrive/Duke/7_Fall_2016/ECE_559/Transmit_port/tests/testbench_single_frame.v
+L0 5
+R43
+r1
+!s85 0
+31
+!s108 1481797703.000000
+!s107 C:/Users/User/OneDrive/Duke/7_Fall_2016/ECE_559/Transmit_port/tests/testbench_single_frame.v|
+!s90 -reportprogress|300|-work|work|-stats=none|C:/Users/User/OneDrive/Duke/7_Fall_2016/ECE_559/Transmit_port/tests/testbench_single_frame.v|
+!i113 1
+R45
 Exmittop
-Z41 w1481792958
+Z46 w1481792958
 R1
 R2
 R3
-Z42 8C:/Users/User/OneDrive/Duke/7_Fall_2016/ECE_559/Transmit_port/xmitTop.vhd
-Z43 FC:/Users/User/OneDrive/Duke/7_Fall_2016/ECE_559/Transmit_port/xmitTop.vhd
+Z47 8C:/Users/User/OneDrive/Duke/7_Fall_2016/ECE_559/Transmit_port/xmitTop.vhd
+Z48 FC:/Users/User/OneDrive/Duke/7_Fall_2016/ECE_559/Transmit_port/xmitTop.vhd
 l0
 L4
 VFG0iiIV^mYl`aD0ZbKjDM3
 !s100 OkH0EKzObJdkl48gaAUk31
 R6
 33
-Z44 !s110 1481792961
+Z49 !s110 1481792961
 !i10b 1
-Z45 !s108 1481792961.000000
-Z46 !s90 -reportprogress|300|-work|work|-2008|-explicit|-stats=none|C:/Users/User/OneDrive/Duke/7_Fall_2016/ECE_559/Transmit_port/xmitTop.vhd|
-Z47 !s107 C:/Users/User/OneDrive/Duke/7_Fall_2016/ECE_559/Transmit_port/xmitTop.vhd|
+Z50 !s108 1481792961.000000
+Z51 !s90 -reportprogress|300|-work|work|-2008|-explicit|-stats=none|C:/Users/User/OneDrive/Duke/7_Fall_2016/ECE_559/Transmit_port/xmitTop.vhd|
+Z52 !s107 C:/Users/User/OneDrive/Duke/7_Fall_2016/ECE_559/Transmit_port/xmitTop.vhd|
 !i113 1
 R11
 R12
@@ -260,11 +460,11 @@ V8bDPMc<E]ck[J@lEYmFZo3
 !s100 SO97n[Q7DSmFDBHChGS]31
 R6
 33
-R44
+R49
 !i10b 1
-R45
-R46
-R47
+R50
+R51
+R52
 !i113 1
 R11
 R12

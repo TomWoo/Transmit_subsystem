@@ -40,7 +40,6 @@ begin
 
 -- Asynchronous signals
 process(all) begin
-	frame_len <= to_integer(unsigned(controli(11 downto 0)));
 	usedw_hi <= to_integer(unsigned(numusedhi));
 	usedw_lo <= to_integer(unsigned(numusedlo));
 	
@@ -51,10 +50,20 @@ process(all) begin
 		mem_avail <= '0';
 	end if;
 	
-	if(count = frame_len) then
+	if(count+1 = frame_len) then -- subtle but important +1!
 		stop_out <= '1';
 	else
 		stop_out <= '0';
+	end if;
+end process;
+
+process(clk_sys, reset) begin
+	if(reset = '1') then
+		frame_len <= 4095; -- max 12-bit unsigned integer (avoid 0)
+	elsif(rising_edge(clk_sys)) then
+		if(wrenc = '1') then
+			frame_len <= to_integer(unsigned(controli(11 downto 0)));
+		end if;
 	end if;
 end process;
 
