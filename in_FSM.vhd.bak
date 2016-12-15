@@ -1,0 +1,35 @@
+library ieee;
+use ieee.std_logic_1164.all;
+use ieee.numeric_std.all;
+
+entity out_FSM is
+port(
+	reset					: in std_logic;
+	clk_phy				: in std_logic;
+	
+	data_in				: in std_logic_vector(7 downto 0);
+	start_in				: in std_logic;
+	stop_in				: in std_logic;
+	usedw_hi_in			: in std_logic_vector(14 downto 0);
+	
+	phy_data_out		: out std_logic_vector(3 downto 0);
+	phy_tx_en			: out std_logic;
+	xmit_done_out		: out std_logic;
+	pop_hi				: out std_logic;
+	pop_lo				: out std_logic
+);
+end entity;
+
+architecture rtl of out_FSM is
+	type state is (s_gap, s_preamble, s_SFD, s_hi, s_lo);
+	signal my_state		: state;
+	
+	signal count			: integer range 0 to 4095; -- max size of packet in bytes
+	signal is_even			: std_logic;
+	
+	signal usedw_hi		: integer range 0 to 32767;
+begin
+
+
+
+end architecture;

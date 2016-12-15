@@ -1,0 +1,15 @@
+
+State Machine - |xmitTop|out_FSM:output_FSM|my_state
+Name my_state.s_lo my_state.s_hi my_state.s_SFD my_state.s_preamble my_state.s_gap my_state.s_init 
+my_state.s_init 0 0 0 0 0 0 
+my_state.s_gap 0 0 0 0 1 1 
+my_state.s_preamble 0 0 0 1 0 1 
+my_state.s_SFD 0 0 1 0 0 1 
+my_state.s_hi 0 1 0 0 0 1 
+my_state.s_lo 1 0 0 0 0 1 
+
+State Machine - |xmitTop|in_FSM:input_FSM|my_state
+Name my_state.s_discard my_state.s_stream my_state.s_idle 
+my_state.s_idle 0 0 0 
+my_state.s_stream 0 1 1 
+my_state.s_discard 1 0 1 
