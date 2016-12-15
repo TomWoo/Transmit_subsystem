@@ -25,7 +25,7 @@ port(
 end entity;
 
 architecture rtl of out_FSM is
-	type state is (s_init, s_gap, s_preamble, s_SFD, s_data);
+	type state is (s_init, s_gap, s_wait_96, s_wait_start, s_preamble, s_SFD, s_data);
 	signal my_state		: state;
 	
 	signal count			: integer range 0 to 4095; -- max size of packet in bytes
@@ -78,7 +78,21 @@ process(clk_phy, reset) begin
 				count <= 0;
 			end if;
 		when s_gap =>
-			if(count >= 96/4 and start_in = '1') then
+			if(count >= 96/4) then
+				my_state <= s_wait_start;
+			elsif(start_in = '1') then
+				my_state <= s_wait_96;
+				count <= count + 1;
+			else
+				count <= count + 1;
+			end if;
+		when s_wait_start =>
+			if(start_in = '1') then
+				my_state <= s_preamble;
+				count <= 0;
+			end if;
+		when s_wait_96 =>
+			if(count >= 96/4) then
 				my_state <= s_preamble;
 				count <= 0;
 			else
@@ -100,7 +114,7 @@ process(clk_phy, reset) begin
 			end if;
 		when others => -- s_data
 			if(stop_in = '1') then
-				my_state <= s_init;
+				my_state <= s_gap;
 				count <= 0;
 			else
 				count <= count + 1;
@@ -125,7 +139,7 @@ end process;
 -- Output signals
 process(all) begin
 	case my_state is
-	when s_init =>
+	when s_init | s_gap =>
 		phy_data_out <= X"0";
 		phy_tx_en <= '0';
 		xmit_done_out <= '0';
@@ -136,7 +150,7 @@ process(all) begin
 			pop_hi <= '0';
 			pop_lo <= '1';
 		end if;
-	when s_gap =>
+	when s_wait_start | s_wait_96 =>
 		phy_data_out <= X"0";
 		phy_tx_en <= '0';
 		xmit_done_out <= '0';
