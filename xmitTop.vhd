@@ -44,24 +44,9 @@ port(
 	out_m_discard_en:		out std_logic;
 	out_wren:				out std_logic;
 	start:					out std_logic;
-	stop:						out std_logic
-);
-end component;
-
-component monitoring_logic
-port(
-	clk_sys:					in std_logic;
-	reset: 					in std_logic;
+	stop:						out std_logic;
 	
-	discard_enable:		in std_logic;
-	xmit_done:				in std_logic;
-	discard_frame:			in std_logic_vector(11 downto 0);
-	frame_seq:				in std_logic_vector(23 downto 0);
-	
-	discard_looknow:		out std_logic;
-	ctrl_block_out:		out std_logic_vector(23 downto 0);
-	discard_frame_out:	out std_logic_vector(11 downto 0);
-	xmit_looknow:			out std_logic
+	frame_seq_num_out:	out std_logic_vector(11 downto 0)
 );
 end component;
 
@@ -135,7 +120,9 @@ signal push_lo:			std_logic;
 
 -- Wires from in_FSM to monitoring_logic
 
-
+signal controlo:			std_logic_vector(23 downto 0);
+signal discard_en:		std_logic;
+signal frame_seq_num:	std_logic_vector(11 downto 0);
 
 -- Wires from FIFOs to out_FSM
 
@@ -160,13 +147,39 @@ signal pop_lo:					std_logic;
 
 begin
 
--- Instantiations --
+-- Processes
 
--- Wire assignments
-
+/*
 process(all) begin
-	push_hi <= out_wren and out_priority;
-	push_lo <= out_wren and not(out_priority);
+	push_hi <= f_rec_data_valid and f_hi_priority;
+	push_lo <= f_rec_data_valid and not(f_hi_priority);
+end process;
+*/
+
+-- Registered inputs to FIFOs
+
+process(clk_sys, reset) begin
+	if(reset = '1') then
+		push_hi <= '0';
+		push_lo <= '0';
+	elsif(rising_edge(clk_sys)) then
+		push_hi <= f_rec_data_valid and f_hi_priority;
+		push_lo <= f_rec_data_valid and not(f_hi_priority);
+	end if;
+end process;
+
+-- Registered outputs to monitoring_logic
+
+process(clk_sys, reset) begin
+	if(reset = '1') then
+		m_discard_en <= '0';
+		m_discard_frame <= X"000";
+		m_tx_frame <= X"000000";
+	elsif(rising_edge(clk_sys)) then
+		m_discard_en <= discard_en;
+		m_discard_frame <= frame_seq_num;
+		m_tx_frame <= controlo;
+	end if;
 end process;
 
 -- Entities
@@ -183,13 +196,15 @@ input_FSM: in_FSM port map(
 	numusedhi					=> usedw_hi,
 	numusedlo					=> usedw_lo,
 	
---	controlo						=> 
+	controlo						=> controlo,
 	datao							=> data_fifo_in,
 	out_priority				=> out_priority,
-	out_m_discard_en			=> m_discard_en,
+	out_m_discard_en			=> discard_en,
 	out_wren						=> out_wren,
 	start							=> start_fifo_in,
-	stop							=> stop_fifo_in
+	stop							=> stop_fifo_in,
+	
+	frame_seq_num_out			=> frame_seq_num
 );
 
 output_FSM: out_FSM port map(

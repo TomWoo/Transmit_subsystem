@@ -1,5 +1,5 @@
 Analysis & Synthesis report for Xmit
-Thu Dec 15 03:45:56 2016
+Tue Dec 20 17:22:42 2016
 Quartus Prime Version 16.0.0 Build 211 04/27/2016 SJ Lite Edition
 
 
@@ -15,10 +15,10 @@ Quartus Prime Version 16.0.0 Build 211 04/27/2016 SJ Lite Edition
   7. Analysis & Synthesis Resource Utilization by Entity
   8. Analysis & Synthesis RAM Summary
   9. Analysis & Synthesis IP Cores Summary
- 10. State Machine - |xmitTop|out_FSM:output_FSM|my_state
- 11. State Machine - |xmitTop|in_FSM:input_FSM|my_state
- 12. Registers Protected by Synthesis
- 13. User-Specified and Inferred Latches
+ 10. State Machine - |xmitTop|out_FSM:output_FSM|my_priority_state
+ 11. State Machine - |xmitTop|out_FSM:output_FSM|my_state
+ 12. State Machine - |xmitTop|in_FSM:input_FSM|my_state
+ 13. Registers Protected by Synthesis
  14. Registers Removed During Synthesis
  15. General Register Statistics
  16. Inverted Register Statistics
@@ -144,13 +144,13 @@ agreement for further details.
 +-------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                  ;
 +---------------------------------+---------------------------------------------+
-; Analysis & Synthesis Status     ; Successful - Thu Dec 15 03:45:56 2016       ;
+; Analysis & Synthesis Status     ; Successful - Tue Dec 20 17:22:42 2016       ;
 ; Quartus Prime Version           ; 16.0.0 Build 211 04/27/2016 SJ Lite Edition ;
 ; Revision Name                   ; Xmit                                        ;
 ; Top-level Entity Name           ; xmitTop                                     ;
 ; Family                          ; Cyclone V                                   ;
 ; Logic utilization (in ALMs)     ; N/A                                         ;
-; Total registers                 ; 1052                                        ;
+; Total registers                 ; 1140                                        ;
 ; Total pins                      ; 81                                          ;
 ; Total virtual pins              ; 0                                           ;
 ; Total block memory bits         ; 655,360                                     ;
@@ -266,7 +266,7 @@ agreement for further details.
 ;                            ;             ;
 ; Usage by Processor         ; % Time Used ;
 ;     Processor 1            ; 100.0%      ;
-;     Processor 2            ;   0.0%      ;
+;     Processor 2            ;   0.1%      ;
 +----------------------------+-------------+
 
 
@@ -320,16 +320,16 @@ agreement for further details.
 +---------------------------------------------+-------------+
 ; Resource                                    ; Usage       ;
 +---------------------------------------------+-------------+
-; Estimate of Logic utilization (ALMs needed) ; 665         ;
+; Estimate of Logic utilization (ALMs needed) ; 743         ;
 ;                                             ;             ;
-; Combinational ALUT usage for logic          ; 749         ;
+; Combinational ALUT usage for logic          ; 839         ;
 ;     -- 7 input functions                    ; 2           ;
-;     -- 6 input functions                    ; 257         ;
-;     -- 5 input functions                    ; 87          ;
-;     -- 4 input functions                    ; 109         ;
-;     -- <=3 input functions                  ; 294         ;
+;     -- 6 input functions                    ; 390         ;
+;     -- 5 input functions                    ; 72          ;
+;     -- 4 input functions                    ; 99          ;
+;     -- <=3 input functions                  ; 276         ;
 ;                                             ;             ;
-; Dedicated logic registers                   ; 1052        ;
+; Dedicated logic registers                   ; 1140        ;
 ;                                             ;             ;
 ; I/O pins                                    ; 81          ;
 ; Total MLAB memory bits                      ; 0           ;
@@ -338,9 +338,9 @@ agreement for further details.
 ; Total DSP Blocks                            ; 0           ;
 ;                                             ;             ;
 ; Maximum fan-out node                        ; reset~input ;
-; Maximum fan-out                             ; 1120        ;
-; Total fan-out                               ; 9214        ;
-; Average fan-out                             ; 4.51        ;
+; Maximum fan-out                             ; 1208        ;
+; Total fan-out                               ; 10176       ;
+; Average fan-out                             ; 4.58        ;
 +---------------------------------------------+-------------+
 
 
@@ -349,26 +349,26 @@ agreement for further details.
 +-----------------------------------------------+-------------------+--------------+-------------------+------------+------+--------------+------------------------------------------------------------------------------------------------------------------------------------+--------------------+--------------+
 ; Compilation Hierarchy Node                    ; LC Combinationals ; LC Registers ; Block Memory Bits ; DSP Blocks ; Pins ; Virtual Pins ; Full Hierarchy Name                                                                                                                ; Entity Name        ; Library Name ;
 +-----------------------------------------------+-------------------+--------------+-------------------+------------+------+--------------+------------------------------------------------------------------------------------------------------------------------------------+--------------------+--------------+
-; |xmitTop                                      ; 749 (0)           ; 1052 (0)     ; 655360            ; 0          ; 81   ; 0            ; |xmitTop                                                                                                                           ; xmitTop            ; work         ;
-;    |FIFO_1:start_fifo_hi|                     ; 82 (0)            ; 158 (0)      ; 32768             ; 0          ; 0    ; 0            ; |xmitTop|FIFO_1:start_fifo_hi                                                                                                      ; FIFO_1             ; work         ;
-;       |dcfifo:dcfifo_component|               ; 82 (0)            ; 158 (0)      ; 32768             ; 0          ; 0    ; 0            ; |xmitTop|FIFO_1:start_fifo_hi|dcfifo:dcfifo_component                                                                              ; dcfifo             ; work         ;
-;          |dcfifo_abt1:auto_generated|         ; 82 (4)            ; 158 (48)     ; 32768             ; 0          ; 0    ; 0            ; |xmitTop|FIFO_1:start_fifo_hi|dcfifo:dcfifo_component|dcfifo_abt1:auto_generated                                                   ; dcfifo_abt1        ; work         ;
-;             |a_graycounter_pdc:wrptr_g1p|     ; 25 (25)           ; 20 (20)      ; 0                 ; 0          ; 0    ; 0            ; |xmitTop|FIFO_1:start_fifo_hi|dcfifo:dcfifo_component|dcfifo_abt1:auto_generated|a_graycounter_pdc:wrptr_g1p                       ; a_graycounter_pdc  ; work         ;
-;             |a_graycounter_tv6:rdptr_g1p|     ; 32 (32)           ; 20 (20)      ; 0                 ; 0          ; 0    ; 0            ; |xmitTop|FIFO_1:start_fifo_hi|dcfifo:dcfifo_component|dcfifo_abt1:auto_generated|a_graycounter_tv6:rdptr_g1p                       ; a_graycounter_tv6  ; work         ;
+; |xmitTop                                      ; 839 (2)           ; 1140 (39)    ; 655360            ; 0          ; 81   ; 0            ; |xmitTop                                                                                                                           ; xmitTop            ; work         ;
+;    |FIFO_1:start_fifo_hi|                     ; 97 (0)            ; 158 (0)      ; 32768             ; 0          ; 0    ; 0            ; |xmitTop|FIFO_1:start_fifo_hi                                                                                                      ; FIFO_1             ; work         ;
+;       |dcfifo:dcfifo_component|               ; 97 (0)            ; 158 (0)      ; 32768             ; 0          ; 0    ; 0            ; |xmitTop|FIFO_1:start_fifo_hi|dcfifo:dcfifo_component                                                                              ; dcfifo             ; work         ;
+;          |dcfifo_abt1:auto_generated|         ; 97 (5)            ; 158 (48)     ; 32768             ; 0          ; 0    ; 0            ; |xmitTop|FIFO_1:start_fifo_hi|dcfifo:dcfifo_component|dcfifo_abt1:auto_generated                                                   ; dcfifo_abt1        ; work         ;
+;             |a_graycounter_pdc:wrptr_g1p|     ; 24 (24)           ; 20 (20)      ; 0                 ; 0          ; 0    ; 0            ; |xmitTop|FIFO_1:start_fifo_hi|dcfifo:dcfifo_component|dcfifo_abt1:auto_generated|a_graycounter_pdc:wrptr_g1p                       ; a_graycounter_pdc  ; work         ;
+;             |a_graycounter_tv6:rdptr_g1p|     ; 46 (46)           ; 20 (20)      ; 0                 ; 0          ; 0    ; 0            ; |xmitTop|FIFO_1:start_fifo_hi|dcfifo:dcfifo_component|dcfifo_abt1:auto_generated|a_graycounter_tv6:rdptr_g1p                       ; a_graycounter_tv6  ; work         ;
 ;             |alt_synch_pipe_gpl:rs_dgwp|      ; 0 (0)             ; 32 (0)       ; 0                 ; 0          ; 0    ; 0            ; |xmitTop|FIFO_1:start_fifo_hi|dcfifo:dcfifo_component|dcfifo_abt1:auto_generated|alt_synch_pipe_gpl:rs_dgwp                        ; alt_synch_pipe_gpl ; work         ;
 ;                |dffpipe_1f9:dffpipe8|         ; 0 (0)             ; 32 (32)      ; 0                 ; 0          ; 0    ; 0            ; |xmitTop|FIFO_1:start_fifo_hi|dcfifo:dcfifo_component|dcfifo_abt1:auto_generated|alt_synch_pipe_gpl:rs_dgwp|dffpipe_1f9:dffpipe8   ; dffpipe_1f9        ; work         ;
 ;             |alt_synch_pipe_hpl:ws_dgrp|      ; 0 (0)             ; 32 (0)       ; 0                 ; 0          ; 0    ; 0            ; |xmitTop|FIFO_1:start_fifo_hi|dcfifo:dcfifo_component|dcfifo_abt1:auto_generated|alt_synch_pipe_hpl:ws_dgrp                        ; alt_synch_pipe_hpl ; work         ;
 ;                |dffpipe_2f9:dffpipe11|        ; 0 (0)             ; 32 (32)      ; 0                 ; 0          ; 0    ; 0            ; |xmitTop|FIFO_1:start_fifo_hi|dcfifo:dcfifo_component|dcfifo_abt1:auto_generated|alt_synch_pipe_hpl:ws_dgrp|dffpipe_2f9:dffpipe11  ; dffpipe_2f9        ; work         ;
-;             |altsyncram_m5d1:fifo_ram|        ; 7 (2)             ; 6 (6)        ; 32768             ; 0          ; 0    ; 0            ; |xmitTop|FIFO_1:start_fifo_hi|dcfifo:dcfifo_component|dcfifo_abt1:auto_generated|altsyncram_m5d1:fifo_ram                          ; altsyncram_m5d1    ; work         ;
+;             |altsyncram_m5d1:fifo_ram|        ; 9 (4)             ; 6 (6)        ; 32768             ; 0          ; 0    ; 0            ; |xmitTop|FIFO_1:start_fifo_hi|dcfifo:dcfifo_component|dcfifo_abt1:auto_generated|altsyncram_m5d1:fifo_ram                          ; altsyncram_m5d1    ; work         ;
 ;                |decode_v07:decode6|           ; 4 (4)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |xmitTop|FIFO_1:start_fifo_hi|dcfifo:dcfifo_component|dcfifo_abt1:auto_generated|altsyncram_m5d1:fifo_ram|decode_v07:decode6       ; decode_v07         ; work         ;
 ;                |mux_8r7:mux7|                 ; 1 (1)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |xmitTop|FIFO_1:start_fifo_hi|dcfifo:dcfifo_component|dcfifo_abt1:auto_generated|altsyncram_m5d1:fifo_ram|mux_8r7:mux7             ; mux_8r7            ; work         ;
 ;             |cmpr_f06:rdempty_eq_comp|        ; 7 (7)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |xmitTop|FIFO_1:start_fifo_hi|dcfifo:dcfifo_component|dcfifo_abt1:auto_generated|cmpr_f06:rdempty_eq_comp                          ; cmpr_f06           ; work         ;
-;             |cmpr_f06:wrfull_eq_comp|         ; 7 (7)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |xmitTop|FIFO_1:start_fifo_hi|dcfifo:dcfifo_component|dcfifo_abt1:auto_generated|cmpr_f06:wrfull_eq_comp                           ; cmpr_f06           ; work         ;
-;    |FIFO_1:start_fifo_lo|                     ; 82 (0)            ; 158 (0)      ; 32768             ; 0          ; 0    ; 0            ; |xmitTop|FIFO_1:start_fifo_lo                                                                                                      ; FIFO_1             ; work         ;
-;       |dcfifo:dcfifo_component|               ; 82 (0)            ; 158 (0)      ; 32768             ; 0          ; 0    ; 0            ; |xmitTop|FIFO_1:start_fifo_lo|dcfifo:dcfifo_component                                                                              ; dcfifo             ; work         ;
-;          |dcfifo_abt1:auto_generated|         ; 82 (4)            ; 158 (48)     ; 32768             ; 0          ; 0    ; 0            ; |xmitTop|FIFO_1:start_fifo_lo|dcfifo:dcfifo_component|dcfifo_abt1:auto_generated                                                   ; dcfifo_abt1        ; work         ;
-;             |a_graycounter_pdc:wrptr_g1p|     ; 25 (25)           ; 20 (20)      ; 0                 ; 0          ; 0    ; 0            ; |xmitTop|FIFO_1:start_fifo_lo|dcfifo:dcfifo_component|dcfifo_abt1:auto_generated|a_graycounter_pdc:wrptr_g1p                       ; a_graycounter_pdc  ; work         ;
-;             |a_graycounter_tv6:rdptr_g1p|     ; 32 (32)           ; 20 (20)      ; 0                 ; 0          ; 0    ; 0            ; |xmitTop|FIFO_1:start_fifo_lo|dcfifo:dcfifo_component|dcfifo_abt1:auto_generated|a_graycounter_tv6:rdptr_g1p                       ; a_graycounter_tv6  ; work         ;
+;             |cmpr_f06:wrfull_eq_comp|         ; 6 (6)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |xmitTop|FIFO_1:start_fifo_hi|dcfifo:dcfifo_component|dcfifo_abt1:auto_generated|cmpr_f06:wrfull_eq_comp                           ; cmpr_f06           ; work         ;
+;    |FIFO_1:start_fifo_lo|                     ; 93 (0)            ; 158 (0)      ; 32768             ; 0          ; 0    ; 0            ; |xmitTop|FIFO_1:start_fifo_lo                                                                                                      ; FIFO_1             ; work         ;
+;       |dcfifo:dcfifo_component|               ; 93 (0)            ; 158 (0)      ; 32768             ; 0          ; 0    ; 0            ; |xmitTop|FIFO_1:start_fifo_lo|dcfifo:dcfifo_component                                                                              ; dcfifo             ; work         ;
+;          |dcfifo_abt1:auto_generated|         ; 93 (5)            ; 158 (48)     ; 32768             ; 0          ; 0    ; 0            ; |xmitTop|FIFO_1:start_fifo_lo|dcfifo:dcfifo_component|dcfifo_abt1:auto_generated                                                   ; dcfifo_abt1        ; work         ;
+;             |a_graycounter_pdc:wrptr_g1p|     ; 24 (24)           ; 20 (20)      ; 0                 ; 0          ; 0    ; 0            ; |xmitTop|FIFO_1:start_fifo_lo|dcfifo:dcfifo_component|dcfifo_abt1:auto_generated|a_graycounter_pdc:wrptr_g1p                       ; a_graycounter_pdc  ; work         ;
+;             |a_graycounter_tv6:rdptr_g1p|     ; 44 (44)           ; 20 (20)      ; 0                 ; 0          ; 0    ; 0            ; |xmitTop|FIFO_1:start_fifo_lo|dcfifo:dcfifo_component|dcfifo_abt1:auto_generated|a_graycounter_tv6:rdptr_g1p                       ; a_graycounter_tv6  ; work         ;
 ;             |alt_synch_pipe_gpl:rs_dgwp|      ; 0 (0)             ; 32 (0)       ; 0                 ; 0          ; 0    ; 0            ; |xmitTop|FIFO_1:start_fifo_lo|dcfifo:dcfifo_component|dcfifo_abt1:auto_generated|alt_synch_pipe_gpl:rs_dgwp                        ; alt_synch_pipe_gpl ; work         ;
 ;                |dffpipe_1f9:dffpipe8|         ; 0 (0)             ; 32 (32)      ; 0                 ; 0          ; 0    ; 0            ; |xmitTop|FIFO_1:start_fifo_lo|dcfifo:dcfifo_component|dcfifo_abt1:auto_generated|alt_synch_pipe_gpl:rs_dgwp|dffpipe_1f9:dffpipe8   ; dffpipe_1f9        ; work         ;
 ;             |alt_synch_pipe_hpl:ws_dgrp|      ; 0 (0)             ; 32 (0)       ; 0                 ; 0          ; 0    ; 0            ; |xmitTop|FIFO_1:start_fifo_lo|dcfifo:dcfifo_component|dcfifo_abt1:auto_generated|alt_synch_pipe_hpl:ws_dgrp                        ; alt_synch_pipe_hpl ; work         ;
@@ -377,26 +377,26 @@ agreement for further details.
 ;                |decode_v07:decode6|           ; 4 (4)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |xmitTop|FIFO_1:start_fifo_lo|dcfifo:dcfifo_component|dcfifo_abt1:auto_generated|altsyncram_m5d1:fifo_ram|decode_v07:decode6       ; decode_v07         ; work         ;
 ;                |mux_8r7:mux7|                 ; 1 (1)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |xmitTop|FIFO_1:start_fifo_lo|dcfifo:dcfifo_component|dcfifo_abt1:auto_generated|altsyncram_m5d1:fifo_ram|mux_8r7:mux7             ; mux_8r7            ; work         ;
 ;             |cmpr_f06:rdempty_eq_comp|        ; 7 (7)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |xmitTop|FIFO_1:start_fifo_lo|dcfifo:dcfifo_component|dcfifo_abt1:auto_generated|cmpr_f06:rdempty_eq_comp                          ; cmpr_f06           ; work         ;
-;             |cmpr_f06:wrfull_eq_comp|         ; 7 (7)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |xmitTop|FIFO_1:start_fifo_lo|dcfifo:dcfifo_component|dcfifo_abt1:auto_generated|cmpr_f06:wrfull_eq_comp                           ; cmpr_f06           ; work         ;
-;    |FIFO_1:stop_fifo_hi|                      ; 82 (0)            ; 158 (0)      ; 32768             ; 0          ; 0    ; 0            ; |xmitTop|FIFO_1:stop_fifo_hi                                                                                                       ; FIFO_1             ; work         ;
-;       |dcfifo:dcfifo_component|               ; 82 (0)            ; 158 (0)      ; 32768             ; 0          ; 0    ; 0            ; |xmitTop|FIFO_1:stop_fifo_hi|dcfifo:dcfifo_component                                                                               ; dcfifo             ; work         ;
-;          |dcfifo_abt1:auto_generated|         ; 82 (4)            ; 158 (48)     ; 32768             ; 0          ; 0    ; 0            ; |xmitTop|FIFO_1:stop_fifo_hi|dcfifo:dcfifo_component|dcfifo_abt1:auto_generated                                                    ; dcfifo_abt1        ; work         ;
-;             |a_graycounter_pdc:wrptr_g1p|     ; 25 (25)           ; 20 (20)      ; 0                 ; 0          ; 0    ; 0            ; |xmitTop|FIFO_1:stop_fifo_hi|dcfifo:dcfifo_component|dcfifo_abt1:auto_generated|a_graycounter_pdc:wrptr_g1p                        ; a_graycounter_pdc  ; work         ;
-;             |a_graycounter_tv6:rdptr_g1p|     ; 32 (32)           ; 20 (20)      ; 0                 ; 0          ; 0    ; 0            ; |xmitTop|FIFO_1:stop_fifo_hi|dcfifo:dcfifo_component|dcfifo_abt1:auto_generated|a_graycounter_tv6:rdptr_g1p                        ; a_graycounter_tv6  ; work         ;
+;             |cmpr_f06:wrfull_eq_comp|         ; 6 (6)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |xmitTop|FIFO_1:start_fifo_lo|dcfifo:dcfifo_component|dcfifo_abt1:auto_generated|cmpr_f06:wrfull_eq_comp                           ; cmpr_f06           ; work         ;
+;    |FIFO_1:stop_fifo_hi|                      ; 97 (0)            ; 158 (0)      ; 32768             ; 0          ; 0    ; 0            ; |xmitTop|FIFO_1:stop_fifo_hi                                                                                                       ; FIFO_1             ; work         ;
+;       |dcfifo:dcfifo_component|               ; 97 (0)            ; 158 (0)      ; 32768             ; 0          ; 0    ; 0            ; |xmitTop|FIFO_1:stop_fifo_hi|dcfifo:dcfifo_component                                                                               ; dcfifo             ; work         ;
+;          |dcfifo_abt1:auto_generated|         ; 97 (5)            ; 158 (48)     ; 32768             ; 0          ; 0    ; 0            ; |xmitTop|FIFO_1:stop_fifo_hi|dcfifo:dcfifo_component|dcfifo_abt1:auto_generated                                                    ; dcfifo_abt1        ; work         ;
+;             |a_graycounter_pdc:wrptr_g1p|     ; 24 (24)           ; 20 (20)      ; 0                 ; 0          ; 0    ; 0            ; |xmitTop|FIFO_1:stop_fifo_hi|dcfifo:dcfifo_component|dcfifo_abt1:auto_generated|a_graycounter_pdc:wrptr_g1p                        ; a_graycounter_pdc  ; work         ;
+;             |a_graycounter_tv6:rdptr_g1p|     ; 46 (46)           ; 20 (20)      ; 0                 ; 0          ; 0    ; 0            ; |xmitTop|FIFO_1:stop_fifo_hi|dcfifo:dcfifo_component|dcfifo_abt1:auto_generated|a_graycounter_tv6:rdptr_g1p                        ; a_graycounter_tv6  ; work         ;
 ;             |alt_synch_pipe_gpl:rs_dgwp|      ; 0 (0)             ; 32 (0)       ; 0                 ; 0          ; 0    ; 0            ; |xmitTop|FIFO_1:stop_fifo_hi|dcfifo:dcfifo_component|dcfifo_abt1:auto_generated|alt_synch_pipe_gpl:rs_dgwp                         ; alt_synch_pipe_gpl ; work         ;
 ;                |dffpipe_1f9:dffpipe8|         ; 0 (0)             ; 32 (32)      ; 0                 ; 0          ; 0    ; 0            ; |xmitTop|FIFO_1:stop_fifo_hi|dcfifo:dcfifo_component|dcfifo_abt1:auto_generated|alt_synch_pipe_gpl:rs_dgwp|dffpipe_1f9:dffpipe8    ; dffpipe_1f9        ; work         ;
 ;             |alt_synch_pipe_hpl:ws_dgrp|      ; 0 (0)             ; 32 (0)       ; 0                 ; 0          ; 0    ; 0            ; |xmitTop|FIFO_1:stop_fifo_hi|dcfifo:dcfifo_component|dcfifo_abt1:auto_generated|alt_synch_pipe_hpl:ws_dgrp                         ; alt_synch_pipe_hpl ; work         ;
 ;                |dffpipe_2f9:dffpipe11|        ; 0 (0)             ; 32 (32)      ; 0                 ; 0          ; 0    ; 0            ; |xmitTop|FIFO_1:stop_fifo_hi|dcfifo:dcfifo_component|dcfifo_abt1:auto_generated|alt_synch_pipe_hpl:ws_dgrp|dffpipe_2f9:dffpipe11   ; dffpipe_2f9        ; work         ;
-;             |altsyncram_m5d1:fifo_ram|        ; 7 (2)             ; 6 (6)        ; 32768             ; 0          ; 0    ; 0            ; |xmitTop|FIFO_1:stop_fifo_hi|dcfifo:dcfifo_component|dcfifo_abt1:auto_generated|altsyncram_m5d1:fifo_ram                           ; altsyncram_m5d1    ; work         ;
+;             |altsyncram_m5d1:fifo_ram|        ; 9 (4)             ; 6 (6)        ; 32768             ; 0          ; 0    ; 0            ; |xmitTop|FIFO_1:stop_fifo_hi|dcfifo:dcfifo_component|dcfifo_abt1:auto_generated|altsyncram_m5d1:fifo_ram                           ; altsyncram_m5d1    ; work         ;
 ;                |decode_v07:decode6|           ; 4 (4)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |xmitTop|FIFO_1:stop_fifo_hi|dcfifo:dcfifo_component|dcfifo_abt1:auto_generated|altsyncram_m5d1:fifo_ram|decode_v07:decode6        ; decode_v07         ; work         ;
 ;                |mux_8r7:mux7|                 ; 1 (1)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |xmitTop|FIFO_1:stop_fifo_hi|dcfifo:dcfifo_component|dcfifo_abt1:auto_generated|altsyncram_m5d1:fifo_ram|mux_8r7:mux7              ; mux_8r7            ; work         ;
 ;             |cmpr_f06:rdempty_eq_comp|        ; 7 (7)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |xmitTop|FIFO_1:stop_fifo_hi|dcfifo:dcfifo_component|dcfifo_abt1:auto_generated|cmpr_f06:rdempty_eq_comp                           ; cmpr_f06           ; work         ;
-;             |cmpr_f06:wrfull_eq_comp|         ; 7 (7)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |xmitTop|FIFO_1:stop_fifo_hi|dcfifo:dcfifo_component|dcfifo_abt1:auto_generated|cmpr_f06:wrfull_eq_comp                            ; cmpr_f06           ; work         ;
-;    |FIFO_1:stop_fifo_lo|                      ; 82 (0)            ; 158 (0)      ; 32768             ; 0          ; 0    ; 0            ; |xmitTop|FIFO_1:stop_fifo_lo                                                                                                       ; FIFO_1             ; work         ;
-;       |dcfifo:dcfifo_component|               ; 82 (0)            ; 158 (0)      ; 32768             ; 0          ; 0    ; 0            ; |xmitTop|FIFO_1:stop_fifo_lo|dcfifo:dcfifo_component                                                                               ; dcfifo             ; work         ;
-;          |dcfifo_abt1:auto_generated|         ; 82 (4)            ; 158 (48)     ; 32768             ; 0          ; 0    ; 0            ; |xmitTop|FIFO_1:stop_fifo_lo|dcfifo:dcfifo_component|dcfifo_abt1:auto_generated                                                    ; dcfifo_abt1        ; work         ;
-;             |a_graycounter_pdc:wrptr_g1p|     ; 25 (25)           ; 20 (20)      ; 0                 ; 0          ; 0    ; 0            ; |xmitTop|FIFO_1:stop_fifo_lo|dcfifo:dcfifo_component|dcfifo_abt1:auto_generated|a_graycounter_pdc:wrptr_g1p                        ; a_graycounter_pdc  ; work         ;
-;             |a_graycounter_tv6:rdptr_g1p|     ; 32 (32)           ; 20 (20)      ; 0                 ; 0          ; 0    ; 0            ; |xmitTop|FIFO_1:stop_fifo_lo|dcfifo:dcfifo_component|dcfifo_abt1:auto_generated|a_graycounter_tv6:rdptr_g1p                        ; a_graycounter_tv6  ; work         ;
+;             |cmpr_f06:wrfull_eq_comp|         ; 6 (6)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |xmitTop|FIFO_1:stop_fifo_hi|dcfifo:dcfifo_component|dcfifo_abt1:auto_generated|cmpr_f06:wrfull_eq_comp                            ; cmpr_f06           ; work         ;
+;    |FIFO_1:stop_fifo_lo|                      ; 93 (0)            ; 158 (0)      ; 32768             ; 0          ; 0    ; 0            ; |xmitTop|FIFO_1:stop_fifo_lo                                                                                                       ; FIFO_1             ; work         ;
+;       |dcfifo:dcfifo_component|               ; 93 (0)            ; 158 (0)      ; 32768             ; 0          ; 0    ; 0            ; |xmitTop|FIFO_1:stop_fifo_lo|dcfifo:dcfifo_component                                                                               ; dcfifo             ; work         ;
+;          |dcfifo_abt1:auto_generated|         ; 93 (5)            ; 158 (48)     ; 32768             ; 0          ; 0    ; 0            ; |xmitTop|FIFO_1:stop_fifo_lo|dcfifo:dcfifo_component|dcfifo_abt1:auto_generated                                                    ; dcfifo_abt1        ; work         ;
+;             |a_graycounter_pdc:wrptr_g1p|     ; 24 (24)           ; 20 (20)      ; 0                 ; 0          ; 0    ; 0            ; |xmitTop|FIFO_1:stop_fifo_lo|dcfifo:dcfifo_component|dcfifo_abt1:auto_generated|a_graycounter_pdc:wrptr_g1p                        ; a_graycounter_pdc  ; work         ;
+;             |a_graycounter_tv6:rdptr_g1p|     ; 44 (44)           ; 20 (20)      ; 0                 ; 0          ; 0    ; 0            ; |xmitTop|FIFO_1:stop_fifo_lo|dcfifo:dcfifo_component|dcfifo_abt1:auto_generated|a_graycounter_tv6:rdptr_g1p                        ; a_graycounter_tv6  ; work         ;
 ;             |alt_synch_pipe_gpl:rs_dgwp|      ; 0 (0)             ; 32 (0)       ; 0                 ; 0          ; 0    ; 0            ; |xmitTop|FIFO_1:stop_fifo_lo|dcfifo:dcfifo_component|dcfifo_abt1:auto_generated|alt_synch_pipe_gpl:rs_dgwp                         ; alt_synch_pipe_gpl ; work         ;
 ;                |dffpipe_1f9:dffpipe8|         ; 0 (0)             ; 32 (32)      ; 0                 ; 0          ; 0    ; 0            ; |xmitTop|FIFO_1:stop_fifo_lo|dcfifo:dcfifo_component|dcfifo_abt1:auto_generated|alt_synch_pipe_gpl:rs_dgwp|dffpipe_1f9:dffpipe8    ; dffpipe_1f9        ; work         ;
 ;             |alt_synch_pipe_hpl:ws_dgrp|      ; 0 (0)             ; 32 (0)       ; 0                 ; 0          ; 0    ; 0            ; |xmitTop|FIFO_1:stop_fifo_lo|dcfifo:dcfifo_component|dcfifo_abt1:auto_generated|alt_synch_pipe_hpl:ws_dgrp                         ; alt_synch_pipe_hpl ; work         ;
@@ -405,32 +405,32 @@ agreement for further details.
 ;                |decode_v07:decode6|           ; 4 (4)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |xmitTop|FIFO_1:stop_fifo_lo|dcfifo:dcfifo_component|dcfifo_abt1:auto_generated|altsyncram_m5d1:fifo_ram|decode_v07:decode6        ; decode_v07         ; work         ;
 ;                |mux_8r7:mux7|                 ; 1 (1)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |xmitTop|FIFO_1:stop_fifo_lo|dcfifo:dcfifo_component|dcfifo_abt1:auto_generated|altsyncram_m5d1:fifo_ram|mux_8r7:mux7              ; mux_8r7            ; work         ;
 ;             |cmpr_f06:rdempty_eq_comp|        ; 7 (7)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |xmitTop|FIFO_1:stop_fifo_lo|dcfifo:dcfifo_component|dcfifo_abt1:auto_generated|cmpr_f06:rdempty_eq_comp                           ; cmpr_f06           ; work         ;
-;             |cmpr_f06:wrfull_eq_comp|         ; 7 (7)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |xmitTop|FIFO_1:stop_fifo_lo|dcfifo:dcfifo_component|dcfifo_abt1:auto_generated|cmpr_f06:wrfull_eq_comp                            ; cmpr_f06           ; work         ;
-;    |dataFIFO:data_fifo_hi|                    ; 128 (0)           ; 188 (0)      ; 262144            ; 0          ; 0    ; 0            ; |xmitTop|dataFIFO:data_fifo_hi                                                                                                     ; dataFIFO           ; work         ;
-;       |dcfifo:dcfifo_component|               ; 128 (0)           ; 188 (0)      ; 262144            ; 0          ; 0    ; 0            ; |xmitTop|dataFIFO:data_fifo_hi|dcfifo:dcfifo_component                                                                             ; dcfifo             ; work         ;
-;          |dcfifo_obt1:auto_generated|         ; 128 (21)          ; 188 (48)     ; 262144            ; 0          ; 0    ; 0            ; |xmitTop|dataFIFO:data_fifo_hi|dcfifo:dcfifo_component|dcfifo_obt1:auto_generated                                                  ; dcfifo_obt1        ; work         ;
+;             |cmpr_f06:wrfull_eq_comp|         ; 6 (6)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |xmitTop|FIFO_1:stop_fifo_lo|dcfifo:dcfifo_component|dcfifo_abt1:auto_generated|cmpr_f06:wrfull_eq_comp                            ; cmpr_f06           ; work         ;
+;    |dataFIFO:data_fifo_hi|                    ; 145 (0)           ; 188 (0)      ; 262144            ; 0          ; 0    ; 0            ; |xmitTop|dataFIFO:data_fifo_hi                                                                                                     ; dataFIFO           ; work         ;
+;       |dcfifo:dcfifo_component|               ; 145 (0)           ; 188 (0)      ; 262144            ; 0          ; 0    ; 0            ; |xmitTop|dataFIFO:data_fifo_hi|dcfifo:dcfifo_component                                                                             ; dcfifo             ; work         ;
+;          |dcfifo_obt1:auto_generated|         ; 145 (20)          ; 188 (48)     ; 262144            ; 0          ; 0    ; 0            ; |xmitTop|dataFIFO:data_fifo_hi|dcfifo:dcfifo_component|dcfifo_obt1:auto_generated                                                  ; dcfifo_obt1        ; work         ;
 ;             |a_gray2bin_uab:wrptr_g_gray2bin| ; 14 (14)           ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |xmitTop|dataFIFO:data_fifo_hi|dcfifo:dcfifo_component|dcfifo_obt1:auto_generated|a_gray2bin_uab:wrptr_g_gray2bin                  ; a_gray2bin_uab     ; work         ;
 ;             |a_gray2bin_uab:ws_dgrp_gray2bin| ; 15 (15)           ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |xmitTop|dataFIFO:data_fifo_hi|dcfifo:dcfifo_component|dcfifo_obt1:auto_generated|a_gray2bin_uab:ws_dgrp_gray2bin                  ; a_gray2bin_uab     ; work         ;
-;             |a_graycounter_pdc:wrptr_g1p|     ; 25 (25)           ; 20 (20)      ; 0                 ; 0          ; 0    ; 0            ; |xmitTop|dataFIFO:data_fifo_hi|dcfifo:dcfifo_component|dcfifo_obt1:auto_generated|a_graycounter_pdc:wrptr_g1p                      ; a_graycounter_pdc  ; work         ;
-;             |a_graycounter_tv6:rdptr_g1p|     ; 32 (32)           ; 20 (20)      ; 0                 ; 0          ; 0    ; 0            ; |xmitTop|dataFIFO:data_fifo_hi|dcfifo:dcfifo_component|dcfifo_obt1:auto_generated|a_graycounter_tv6:rdptr_g1p                      ; a_graycounter_tv6  ; work         ;
+;             |a_graycounter_pdc:wrptr_g1p|     ; 24 (24)           ; 20 (20)      ; 0                 ; 0          ; 0    ; 0            ; |xmitTop|dataFIFO:data_fifo_hi|dcfifo:dcfifo_component|dcfifo_obt1:auto_generated|a_graycounter_pdc:wrptr_g1p                      ; a_graycounter_pdc  ; work         ;
+;             |a_graycounter_tv6:rdptr_g1p|     ; 49 (49)           ; 20 (20)      ; 0                 ; 0          ; 0    ; 0            ; |xmitTop|dataFIFO:data_fifo_hi|dcfifo:dcfifo_component|dcfifo_obt1:auto_generated|a_graycounter_tv6:rdptr_g1p                      ; a_graycounter_tv6  ; work         ;
 ;             |alt_synch_pipe_epl:rs_dgwp|      ; 0 (0)             ; 32 (0)       ; 0                 ; 0          ; 0    ; 0            ; |xmitTop|dataFIFO:data_fifo_hi|dcfifo:dcfifo_component|dcfifo_obt1:auto_generated|alt_synch_pipe_epl:rs_dgwp                       ; alt_synch_pipe_epl ; work         ;
 ;                |dffpipe_ve9:dffpipe15|        ; 0 (0)             ; 32 (32)      ; 0                 ; 0          ; 0    ; 0            ; |xmitTop|dataFIFO:data_fifo_hi|dcfifo:dcfifo_component|dcfifo_obt1:auto_generated|alt_synch_pipe_epl:rs_dgwp|dffpipe_ve9:dffpipe15 ; dffpipe_ve9        ; work         ;
 ;             |alt_synch_pipe_fpl:ws_dgrp|      ; 0 (0)             ; 32 (0)       ; 0                 ; 0          ; 0    ; 0            ; |xmitTop|dataFIFO:data_fifo_hi|dcfifo:dcfifo_component|dcfifo_obt1:auto_generated|alt_synch_pipe_fpl:ws_dgrp                       ; alt_synch_pipe_fpl ; work         ;
 ;                |dffpipe_0f9:dffpipe18|        ; 0 (0)             ; 32 (32)      ; 0                 ; 0          ; 0    ; 0            ; |xmitTop|dataFIFO:data_fifo_hi|dcfifo:dcfifo_component|dcfifo_obt1:auto_generated|alt_synch_pipe_fpl:ws_dgrp|dffpipe_0f9:dffpipe18 ; dffpipe_0f9        ; work         ;
-;             |altsyncram_46d1:fifo_ram|        ; 8 (2)             ; 6 (6)        ; 262144            ; 0          ; 0    ; 0            ; |xmitTop|dataFIFO:data_fifo_hi|dcfifo:dcfifo_component|dcfifo_obt1:auto_generated|altsyncram_46d1:fifo_ram                         ; altsyncram_46d1    ; work         ;
+;             |altsyncram_46d1:fifo_ram|        ; 10 (4)            ; 6 (6)        ; 262144            ; 0          ; 0    ; 0            ; |xmitTop|dataFIFO:data_fifo_hi|dcfifo:dcfifo_component|dcfifo_obt1:auto_generated|altsyncram_46d1:fifo_ram                         ; altsyncram_46d1    ; work         ;
 ;                |decode_v07:decode12|          ; 4 (4)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |xmitTop|dataFIFO:data_fifo_hi|dcfifo:dcfifo_component|dcfifo_obt1:auto_generated|altsyncram_46d1:fifo_ram|decode_v07:decode12     ; decode_v07         ; work         ;
 ;                |mux_fr7:mux13|                ; 2 (2)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |xmitTop|dataFIFO:data_fifo_hi|dcfifo:dcfifo_component|dcfifo_obt1:auto_generated|altsyncram_46d1:fifo_ram|mux_fr7:mux13           ; mux_fr7            ; work         ;
 ;             |cmpr_f06:rdempty_eq_comp|        ; 7 (7)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |xmitTop|dataFIFO:data_fifo_hi|dcfifo:dcfifo_component|dcfifo_obt1:auto_generated|cmpr_f06:rdempty_eq_comp                         ; cmpr_f06           ; work         ;
 ;             |cmpr_f06:wrfull_eq_comp|         ; 6 (6)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |xmitTop|dataFIFO:data_fifo_hi|dcfifo:dcfifo_component|dcfifo_obt1:auto_generated|cmpr_f06:wrfull_eq_comp                          ; cmpr_f06           ; work         ;
 ;             |dffpipe_ue9:ws_brp|              ; 0 (0)             ; 15 (15)      ; 0                 ; 0          ; 0    ; 0            ; |xmitTop|dataFIFO:data_fifo_hi|dcfifo:dcfifo_component|dcfifo_obt1:auto_generated|dffpipe_ue9:ws_brp                               ; dffpipe_ue9        ; work         ;
 ;             |dffpipe_ue9:ws_bwp|              ; 0 (0)             ; 15 (15)      ; 0                 ; 0          ; 0    ; 0            ; |xmitTop|dataFIFO:data_fifo_hi|dcfifo:dcfifo_component|dcfifo_obt1:auto_generated|dffpipe_ue9:ws_bwp                               ; dffpipe_ue9        ; work         ;
-;    |dataFIFO:data_fifo_lo|                    ; 128 (0)           ; 188 (0)      ; 262144            ; 0          ; 0    ; 0            ; |xmitTop|dataFIFO:data_fifo_lo                                                                                                     ; dataFIFO           ; work         ;
-;       |dcfifo:dcfifo_component|               ; 128 (0)           ; 188 (0)      ; 262144            ; 0          ; 0    ; 0            ; |xmitTop|dataFIFO:data_fifo_lo|dcfifo:dcfifo_component                                                                             ; dcfifo             ; work         ;
-;          |dcfifo_obt1:auto_generated|         ; 128 (21)          ; 188 (48)     ; 262144            ; 0          ; 0    ; 0            ; |xmitTop|dataFIFO:data_fifo_lo|dcfifo:dcfifo_component|dcfifo_obt1:auto_generated                                                  ; dcfifo_obt1        ; work         ;
+;    |dataFIFO:data_fifo_lo|                    ; 139 (0)           ; 188 (0)      ; 262144            ; 0          ; 0    ; 0            ; |xmitTop|dataFIFO:data_fifo_lo                                                                                                     ; dataFIFO           ; work         ;
+;       |dcfifo:dcfifo_component|               ; 139 (0)           ; 188 (0)      ; 262144            ; 0          ; 0    ; 0            ; |xmitTop|dataFIFO:data_fifo_lo|dcfifo:dcfifo_component                                                                             ; dcfifo             ; work         ;
+;          |dcfifo_obt1:auto_generated|         ; 139 (20)          ; 188 (48)     ; 262144            ; 0          ; 0    ; 0            ; |xmitTop|dataFIFO:data_fifo_lo|dcfifo:dcfifo_component|dcfifo_obt1:auto_generated                                                  ; dcfifo_obt1        ; work         ;
 ;             |a_gray2bin_uab:wrptr_g_gray2bin| ; 14 (14)           ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |xmitTop|dataFIFO:data_fifo_lo|dcfifo:dcfifo_component|dcfifo_obt1:auto_generated|a_gray2bin_uab:wrptr_g_gray2bin                  ; a_gray2bin_uab     ; work         ;
 ;             |a_gray2bin_uab:ws_dgrp_gray2bin| ; 15 (15)           ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |xmitTop|dataFIFO:data_fifo_lo|dcfifo:dcfifo_component|dcfifo_obt1:auto_generated|a_gray2bin_uab:ws_dgrp_gray2bin                  ; a_gray2bin_uab     ; work         ;
-;             |a_graycounter_pdc:wrptr_g1p|     ; 25 (25)           ; 20 (20)      ; 0                 ; 0          ; 0    ; 0            ; |xmitTop|dataFIFO:data_fifo_lo|dcfifo:dcfifo_component|dcfifo_obt1:auto_generated|a_graycounter_pdc:wrptr_g1p                      ; a_graycounter_pdc  ; work         ;
-;             |a_graycounter_tv6:rdptr_g1p|     ; 32 (32)           ; 20 (20)      ; 0                 ; 0          ; 0    ; 0            ; |xmitTop|dataFIFO:data_fifo_lo|dcfifo:dcfifo_component|dcfifo_obt1:auto_generated|a_graycounter_tv6:rdptr_g1p                      ; a_graycounter_tv6  ; work         ;
+;             |a_graycounter_pdc:wrptr_g1p|     ; 24 (24)           ; 20 (20)      ; 0                 ; 0          ; 0    ; 0            ; |xmitTop|dataFIFO:data_fifo_lo|dcfifo:dcfifo_component|dcfifo_obt1:auto_generated|a_graycounter_pdc:wrptr_g1p                      ; a_graycounter_pdc  ; work         ;
+;             |a_graycounter_tv6:rdptr_g1p|     ; 45 (45)           ; 20 (20)      ; 0                 ; 0          ; 0    ; 0            ; |xmitTop|dataFIFO:data_fifo_lo|dcfifo:dcfifo_component|dcfifo_obt1:auto_generated|a_graycounter_tv6:rdptr_g1p                      ; a_graycounter_tv6  ; work         ;
 ;             |alt_synch_pipe_epl:rs_dgwp|      ; 0 (0)             ; 32 (0)       ; 0                 ; 0          ; 0    ; 0            ; |xmitTop|dataFIFO:data_fifo_lo|dcfifo:dcfifo_component|dcfifo_obt1:auto_generated|alt_synch_pipe_epl:rs_dgwp                       ; alt_synch_pipe_epl ; work         ;
 ;                |dffpipe_ve9:dffpipe15|        ; 0 (0)             ; 32 (32)      ; 0                 ; 0          ; 0    ; 0            ; |xmitTop|dataFIFO:data_fifo_lo|dcfifo:dcfifo_component|dcfifo_obt1:auto_generated|alt_synch_pipe_epl:rs_dgwp|dffpipe_ve9:dffpipe15 ; dffpipe_ve9        ; work         ;
 ;             |alt_synch_pipe_fpl:ws_dgrp|      ; 0 (0)             ; 32 (0)       ; 0                 ; 0          ; 0    ; 0            ; |xmitTop|dataFIFO:data_fifo_lo|dcfifo:dcfifo_component|dcfifo_obt1:auto_generated|alt_synch_pipe_fpl:ws_dgrp                       ; alt_synch_pipe_fpl ; work         ;
@@ -442,8 +442,8 @@ agreement for further details.
 ;             |cmpr_f06:wrfull_eq_comp|         ; 6 (6)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |xmitTop|dataFIFO:data_fifo_lo|dcfifo:dcfifo_component|dcfifo_obt1:auto_generated|cmpr_f06:wrfull_eq_comp                          ; cmpr_f06           ; work         ;
 ;             |dffpipe_ue9:ws_brp|              ; 0 (0)             ; 15 (15)      ; 0                 ; 0          ; 0    ; 0            ; |xmitTop|dataFIFO:data_fifo_lo|dcfifo:dcfifo_component|dcfifo_obt1:auto_generated|dffpipe_ue9:ws_brp                               ; dffpipe_ue9        ; work         ;
 ;             |dffpipe_ue9:ws_bwp|              ; 0 (0)             ; 15 (15)      ; 0                 ; 0          ; 0    ; 0            ; |xmitTop|dataFIFO:data_fifo_lo|dcfifo:dcfifo_component|dcfifo_obt1:auto_generated|dffpipe_ue9:ws_bwp                               ; dffpipe_ue9        ; work         ;
-;    |in_FSM:input_FSM|                         ; 95 (95)           ; 26 (26)      ; 0                 ; 0          ; 0    ; 0            ; |xmitTop|in_FSM:input_FSM                                                                                                          ; in_FSM             ; work         ;
-;    |out_FSM:output_FSM|                       ; 70 (70)           ; 18 (18)      ; 0                 ; 0          ; 0    ; 0            ; |xmitTop|out_FSM:output_FSM                                                                                                        ; out_FSM            ; work         ;
+;    |in_FSM:input_FSM|                         ; 95 (95)           ; 72 (72)      ; 0                 ; 0          ; 0    ; 0            ; |xmitTop|in_FSM:input_FSM                                                                                                          ; in_FSM             ; work         ;
+;    |out_FSM:output_FSM|                       ; 78 (78)           ; 21 (21)      ; 0                 ; 0          ; 0    ; 0            ; |xmitTop|out_FSM:output_FSM                                                                                                        ; out_FSM            ; work         ;
 +-----------------------------------------------+-------------------+--------------+-------------------+------------+------+--------------+------------------------------------------------------------------------------------------------------------------------------------+--------------------+--------------+
 Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
 
@@ -477,18 +477,31 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 
 
 Encoding Type:  One-Hot
-+-------------------------------------------------------------------------------------------------------------------------------+
-; State Machine - |xmitTop|out_FSM:output_FSM|my_state                                                                          ;
-+---------------------+---------------+---------------+----------------+---------------------+----------------+-----------------+
-; Name                ; my_state.s_lo ; my_state.s_hi ; my_state.s_SFD ; my_state.s_preamble ; my_state.s_gap ; my_state.s_init ;
-+---------------------+---------------+---------------+----------------+---------------------+----------------+-----------------+
-; my_state.s_init     ; 0             ; 0             ; 0              ; 0                   ; 0              ; 0               ;
-; my_state.s_gap      ; 0             ; 0             ; 0              ; 0                   ; 1              ; 1               ;
-; my_state.s_preamble ; 0             ; 0             ; 0              ; 1                   ; 0              ; 1               ;
-; my_state.s_SFD      ; 0             ; 0             ; 1              ; 0                   ; 0              ; 1               ;
-; my_state.s_hi       ; 0             ; 1             ; 0              ; 0                   ; 0              ; 1               ;
-; my_state.s_lo       ; 1             ; 0             ; 0              ; 0                   ; 0              ; 1               ;
-+---------------------+---------------+---------------+----------------+---------------------+----------------+-----------------+
++-----------------------------------------------------------------------------------------------------+
+; State Machine - |xmitTop|out_FSM:output_FSM|my_priority_state                                       ;
++-------------------------+------------------------+------------------------+-------------------------+
+; Name                    ; my_priority_state.s_lo ; my_priority_state.s_hi ; my_priority_state.s_off ;
++-------------------------+------------------------+------------------------+-------------------------+
+; my_priority_state.s_off ; 0                      ; 0                      ; 0                       ;
+; my_priority_state.s_hi  ; 0                      ; 1                      ; 1                       ;
+; my_priority_state.s_lo  ; 1                      ; 0                      ; 1                       ;
++-------------------------+------------------------+------------------------+-------------------------+
+
+
+Encoding Type:  One-Hot
++----------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; State Machine - |xmitTop|out_FSM:output_FSM|my_state                                                                                                           ;
++-----------------------+-----------------+----------------+---------------------+-----------------------+--------------------+----------------+-----------------+
+; Name                  ; my_state.s_data ; my_state.s_SFD ; my_state.s_preamble ; my_state.s_wait_start ; my_state.s_wait_96 ; my_state.s_gap ; my_state.s_init ;
++-----------------------+-----------------+----------------+---------------------+-----------------------+--------------------+----------------+-----------------+
+; my_state.s_init       ; 0               ; 0              ; 0                   ; 0                     ; 0                  ; 0              ; 0               ;
+; my_state.s_gap        ; 0               ; 0              ; 0                   ; 0                     ; 0                  ; 1              ; 1               ;
+; my_state.s_wait_96    ; 0               ; 0              ; 0                   ; 0                     ; 1                  ; 0              ; 1               ;
+; my_state.s_wait_start ; 0               ; 0              ; 0                   ; 1                     ; 0                  ; 0              ; 1               ;
+; my_state.s_preamble   ; 0               ; 0              ; 1                   ; 0                     ; 0                  ; 0              ; 1               ;
+; my_state.s_SFD        ; 0               ; 1              ; 0                   ; 0                     ; 0                  ; 0              ; 1               ;
+; my_state.s_data       ; 1               ; 0              ; 0                   ; 0                     ; 0                  ; 0              ; 1               ;
++-----------------------+-----------------+----------------+---------------------+-----------------------+--------------------+----------------+-----------------+
 
 
 Encoding Type:  One-Hot
@@ -895,18 +908,6 @@ Encoding Type:  One-Hot
 +---------------------------------------------------------------------------------------------------------------------------------------+------------------------------------------------------------------+--------------------------------------------+
 
 
-+------------------------------------------------------------------------------------------------------------+
-; User-Specified and Inferred Latches                                                                        ;
-+----------------------------------------------------+------------------------------+------------------------+
-; Latch Name                                         ; Latch Enable Signal          ; Free of Timing Hazards ;
-+----------------------------------------------------+------------------------------+------------------------+
-; out_FSM:output_FSM|pop_lo                          ; out_FSM:output_FSM|Selector2 ; yes                    ;
-; out_FSM:output_FSM|pop_hi                          ; out_FSM:output_FSM|Selector0 ; yes                    ;
-; Number of user-specified and inferred latches = 2  ;                              ;                        ;
-+----------------------------------------------------+------------------------------+------------------------+
-Note: All latches listed above may not be present at the end of synthesis due to various synthesis optimizations.
-
-
 +------------------------------------------------------------------------------------------------------------------------------+
 ; Registers Removed During Synthesis                                                                                           ;
 +---------------------------------------------------------------------------------------------------------+--------------------+
@@ -916,7 +917,9 @@ Note: All latches listed above may not be present at the end of synthesis due to
 ; dataFIFO:data_fifo_lo|dcfifo:dcfifo_component|dcfifo_obt1:auto_generated|dffpipe_ue9:ws_brp|dffe14a[15] ; Lost fanout        ;
 ; dataFIFO:data_fifo_hi|dcfifo:dcfifo_component|dcfifo_obt1:auto_generated|dffpipe_ue9:ws_bwp|dffe14a[15] ; Lost fanout        ;
 ; dataFIFO:data_fifo_hi|dcfifo:dcfifo_component|dcfifo_obt1:auto_generated|dffpipe_ue9:ws_brp|dffe14a[15] ; Lost fanout        ;
-; Total Number of Removed Registers = 4                                                                   ;                    ;
+; out_FSM:output_FSM|my_priority_state.s_off                                                              ; Lost fanout        ;
+; in_FSM:input_FSM|my_state.s_stream                                                                      ; Lost fanout        ;
+; Total Number of Removed Registers = 6                                                                   ;                    ;
 +---------------------------------------------------------------------------------------------------------+--------------------+
 
 
@@ -925,12 +928,12 @@ Note: All latches listed above may not be present at the end of synthesis due to
 +----------------------------------------------+-------+
 ; Statistic                                    ; Value ;
 +----------------------------------------------+-------+
-; Total registers                              ; 1052  ;
+; Total registers                              ; 1140  ;
 ; Number of registers using Synchronous Clear  ; 36    ;
 ; Number of registers using Synchronous Load   ; 0     ;
-; Number of registers using Asynchronous Clear ; 1017  ;
+; Number of registers using Asynchronous Clear ; 1082  ;
 ; Number of registers using Asynchronous Load  ; 0     ;
-; Number of registers using Clock Enable       ; 303   ;
+; Number of registers using Clock Enable       ; 348   ;
 ; Number of registers using Preset             ; 0     ;
 +----------------------------------------------+-------+
 
@@ -940,24 +943,24 @@ Note: All latches listed above may not be present at the end of synthesis due to
 +-----------------------------------------------------------------------------------------------------------------+---------+
 ; Inverted Register                                                                                               ; Fan out ;
 +-----------------------------------------------------------------------------------------------------------------+---------+
-; dataFIFO:data_fifo_lo|dcfifo:dcfifo_component|dcfifo_obt1:auto_generated|a_graycounter_tv6:rdptr_g1p|counter5a0 ; 13      ;
-; dataFIFO:data_fifo_hi|dcfifo:dcfifo_component|dcfifo_obt1:auto_generated|a_graycounter_tv6:rdptr_g1p|counter5a0 ; 13      ;
-; FIFO_1:stop_fifo_hi|dcfifo:dcfifo_component|dcfifo_abt1:auto_generated|a_graycounter_tv6:rdptr_g1p|counter5a0   ; 13      ;
-; FIFO_1:stop_fifo_lo|dcfifo:dcfifo_component|dcfifo_abt1:auto_generated|a_graycounter_tv6:rdptr_g1p|counter5a0   ; 13      ;
-; FIFO_1:start_fifo_hi|dcfifo:dcfifo_component|dcfifo_abt1:auto_generated|a_graycounter_tv6:rdptr_g1p|counter5a0  ; 13      ;
-; FIFO_1:start_fifo_lo|dcfifo:dcfifo_component|dcfifo_abt1:auto_generated|a_graycounter_tv6:rdptr_g1p|counter5a0  ; 13      ;
+; dataFIFO:data_fifo_lo|dcfifo:dcfifo_component|dcfifo_obt1:auto_generated|a_graycounter_tv6:rdptr_g1p|counter5a0 ; 16      ;
+; dataFIFO:data_fifo_hi|dcfifo:dcfifo_component|dcfifo_obt1:auto_generated|a_graycounter_tv6:rdptr_g1p|counter5a0 ; 16      ;
+; FIFO_1:stop_fifo_hi|dcfifo:dcfifo_component|dcfifo_abt1:auto_generated|a_graycounter_tv6:rdptr_g1p|counter5a0   ; 16      ;
+; FIFO_1:stop_fifo_lo|dcfifo:dcfifo_component|dcfifo_abt1:auto_generated|a_graycounter_tv6:rdptr_g1p|counter5a0   ; 16      ;
+; FIFO_1:start_fifo_hi|dcfifo:dcfifo_component|dcfifo_abt1:auto_generated|a_graycounter_tv6:rdptr_g1p|counter5a0  ; 16      ;
+; FIFO_1:start_fifo_lo|dcfifo:dcfifo_component|dcfifo_abt1:auto_generated|a_graycounter_tv6:rdptr_g1p|counter5a0  ; 16      ;
 ; dataFIFO:data_fifo_lo|dcfifo:dcfifo_component|dcfifo_obt1:auto_generated|a_graycounter_pdc:wrptr_g1p|counter8a0 ; 7       ;
-; dataFIFO:data_fifo_lo|dcfifo:dcfifo_component|dcfifo_obt1:auto_generated|a_graycounter_tv6:rdptr_g1p|parity6    ; 10      ;
+; dataFIFO:data_fifo_lo|dcfifo:dcfifo_component|dcfifo_obt1:auto_generated|a_graycounter_tv6:rdptr_g1p|parity6    ; 13      ;
 ; dataFIFO:data_fifo_hi|dcfifo:dcfifo_component|dcfifo_obt1:auto_generated|a_graycounter_pdc:wrptr_g1p|counter8a0 ; 7       ;
-; dataFIFO:data_fifo_hi|dcfifo:dcfifo_component|dcfifo_obt1:auto_generated|a_graycounter_tv6:rdptr_g1p|parity6    ; 10      ;
+; dataFIFO:data_fifo_hi|dcfifo:dcfifo_component|dcfifo_obt1:auto_generated|a_graycounter_tv6:rdptr_g1p|parity6    ; 13      ;
 ; FIFO_1:stop_fifo_hi|dcfifo:dcfifo_component|dcfifo_abt1:auto_generated|a_graycounter_pdc:wrptr_g1p|counter8a0   ; 7       ;
-; FIFO_1:stop_fifo_hi|dcfifo:dcfifo_component|dcfifo_abt1:auto_generated|a_graycounter_tv6:rdptr_g1p|parity6      ; 10      ;
+; FIFO_1:stop_fifo_hi|dcfifo:dcfifo_component|dcfifo_abt1:auto_generated|a_graycounter_tv6:rdptr_g1p|parity6      ; 13      ;
 ; FIFO_1:stop_fifo_lo|dcfifo:dcfifo_component|dcfifo_abt1:auto_generated|a_graycounter_pdc:wrptr_g1p|counter8a0   ; 7       ;
-; FIFO_1:stop_fifo_lo|dcfifo:dcfifo_component|dcfifo_abt1:auto_generated|a_graycounter_tv6:rdptr_g1p|parity6      ; 10      ;
+; FIFO_1:stop_fifo_lo|dcfifo:dcfifo_component|dcfifo_abt1:auto_generated|a_graycounter_tv6:rdptr_g1p|parity6      ; 13      ;
 ; FIFO_1:start_fifo_hi|dcfifo:dcfifo_component|dcfifo_abt1:auto_generated|a_graycounter_pdc:wrptr_g1p|counter8a0  ; 7       ;
-; FIFO_1:start_fifo_hi|dcfifo:dcfifo_component|dcfifo_abt1:auto_generated|a_graycounter_tv6:rdptr_g1p|parity6     ; 10      ;
+; FIFO_1:start_fifo_hi|dcfifo:dcfifo_component|dcfifo_abt1:auto_generated|a_graycounter_tv6:rdptr_g1p|parity6     ; 13      ;
 ; FIFO_1:start_fifo_lo|dcfifo:dcfifo_component|dcfifo_abt1:auto_generated|a_graycounter_pdc:wrptr_g1p|counter8a0  ; 7       ;
-; FIFO_1:start_fifo_lo|dcfifo:dcfifo_component|dcfifo_abt1:auto_generated|a_graycounter_tv6:rdptr_g1p|parity6     ; 10      ;
+; FIFO_1:start_fifo_lo|dcfifo:dcfifo_component|dcfifo_abt1:auto_generated|a_graycounter_tv6:rdptr_g1p|parity6     ; 13      ;
 ; dataFIFO:data_fifo_lo|dcfifo:dcfifo_component|dcfifo_obt1:auto_generated|a_graycounter_pdc:wrptr_g1p|parity9    ; 5       ;
 ; dataFIFO:data_fifo_hi|dcfifo:dcfifo_component|dcfifo_obt1:auto_generated|a_graycounter_pdc:wrptr_g1p|parity9    ; 5       ;
 ; FIFO_1:stop_fifo_hi|dcfifo:dcfifo_component|dcfifo_abt1:auto_generated|a_graycounter_pdc:wrptr_g1p|parity9      ; 5       ;
@@ -968,18 +971,19 @@ Note: All latches listed above may not be present at the end of synthesis due to
 +-----------------------------------------------------------------------------------------------------------------+---------+
 
 
-+--------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                                         ;
-+--------------------+-----------+---------------+----------------------+------------------------+------------+------------------------------------------+
-; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output               ;
-+--------------------+-----------+---------------+----------------------+------------------------+------------+------------------------------------------+
-; 5:1                ; 12 bits   ; 36 LEs        ; 24 LEs               ; 12 LEs                 ; Yes        ; |xmitTop|in_FSM:input_FSM|count[9]       ;
-; 10:1               ; 12 bits   ; 72 LEs        ; 0 LEs                ; 72 LEs                 ; Yes        ; |xmitTop|out_FSM:output_FSM|count[0]     ;
-; 5:1                ; 3 bits    ; 9 LEs         ; 6 LEs                ; 3 LEs                  ; No         ; |xmitTop|in_FSM:input_FSM|my_state       ;
-; 16:1               ; 3 bits    ; 30 LEs        ; 30 LEs               ; 0 LEs                  ; No         ; |xmitTop|out_FSM:output_FSM|phy_data_out ;
-; 10:1               ; 4 bits    ; 24 LEs        ; 12 LEs               ; 12 LEs                 ; No         ; |xmitTop|out_FSM:output_FSM|Selector5    ;
-; 10:1               ; 2 bits    ; 12 LEs        ; 4 LEs                ; 8 LEs                  ; No         ; |xmitTop|out_FSM:output_FSM|Selector8    ;
-+--------------------+-----------+---------------+----------------------+------------------------+------------+------------------------------------------+
++-------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                                              ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+-----------------------------------------------+
+; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                    ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+-----------------------------------------------+
+; 5:1                ; 12 bits   ; 36 LEs        ; 0 LEs                ; 36 LEs                 ; Yes        ; |xmitTop|in_FSM:input_FSM|count[2]            ;
+; 12:1               ; 12 bits   ; 96 LEs        ; 0 LEs                ; 96 LEs                 ; Yes        ; |xmitTop|out_FSM:output_FSM|count[7]          ;
+; 4:1                ; 3 bits    ; 6 LEs         ; 6 LEs                ; 0 LEs                  ; No         ; |xmitTop|out_FSM:output_FSM|my_priority_state ;
+; 5:1                ; 3 bits    ; 9 LEs         ; 6 LEs                ; 3 LEs                  ; No         ; |xmitTop|in_FSM:input_FSM|my_state            ;
+; 16:1               ; 3 bits    ; 30 LEs        ; 30 LEs               ; 0 LEs                  ; No         ; |xmitTop|out_FSM:output_FSM|phy_data_out      ;
+; 11:1               ; 5 bits    ; 35 LEs        ; 20 LEs               ; 15 LEs                 ; No         ; |xmitTop|out_FSM:output_FSM|Selector6         ;
+; 13:1               ; 2 bits    ; 16 LEs        ; 6 LEs                ; 10 LEs                 ; No         ; |xmitTop|out_FSM:output_FSM|Selector4         ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+-----------------------------------------------+
 
 
 +----------------------------------------------------------------------+
@@ -2099,13 +2103,14 @@ Note: In order to hide this table in the UI and the text report file, please set
 +---------+--------+----------+----------------------------------------------------------------------------------------------------------+
 
 
-+--------------------------------------------------------------------------------------------------------------------+
-; Port Connectivity Checks: "in_FSM:input_FSM"                                                                       ;
-+----------+--------+----------+-------------------------------------------------------------------------------------+
-; Port     ; Type   ; Severity ; Details                                                                             ;
-+----------+--------+----------+-------------------------------------------------------------------------------------+
-; controlo ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
-+----------+--------+----------+-------------------------------------------------------------------------------------+
++------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "in_FSM:input_FSM"                                                                           ;
++--------------+--------+----------+-------------------------------------------------------------------------------------+
+; Port         ; Type   ; Severity ; Details                                                                             ;
++--------------+--------+----------+-------------------------------------------------------------------------------------+
+; out_priority ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
+; out_wren     ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++--------------+--------+----------+-------------------------------------------------------------------------------------+
 
 
 +-----------------------------------------------------+
@@ -2113,33 +2118,33 @@ Note: In order to hide this table in the UI and the text report file, please set
 +-----------------------+-----------------------------+
 ; Type                  ; Count                       ;
 +-----------------------+-----------------------------+
-; arriav_ff             ; 1052                        ;
-;     CLR               ; 737                         ;
-;     ENA               ; 23                          ;
-;     ENA CLR           ; 256                         ;
+; arriav_ff             ; 1140                        ;
+;     CLR               ; 780                         ;
+;     ENA               ; 46                          ;
+;     ENA CLR           ; 278                         ;
 ;     ENA CLR SCLR      ; 24                          ;
 ;     SCLR              ; 12                          ;
-; arriav_lcell_comb     ; 750                         ;
-;     arith             ; 56                          ;
-;         0 data inputs ; 2                           ;
-;         1 data inputs ; 54                          ;
+; arriav_lcell_comb     ; 839                         ;
+;     arith             ; 68                          ;
+;         0 data inputs ; 3                           ;
+;         1 data inputs ; 64                          ;
+;         2 data inputs ; 1                           ;
 ;     extend            ; 2                           ;
 ;         7 data inputs ; 2                           ;
-;     normal            ; 662                         ;
-;         0 data inputs ; 1                           ;
+;     normal            ; 739                         ;
 ;         1 data inputs ; 19                          ;
-;         2 data inputs ; 100                         ;
-;         3 data inputs ; 89                          ;
-;         4 data inputs ; 109                         ;
-;         5 data inputs ; 87                          ;
-;         6 data inputs ; 257                         ;
+;         2 data inputs ; 76                          ;
+;         3 data inputs ; 83                          ;
+;         4 data inputs ; 99                          ;
+;         5 data inputs ; 72                          ;
+;         6 data inputs ; 390                         ;
 ;     shared            ; 30                          ;
 ;         2 data inputs ; 30                          ;
 ; boundary_port         ; 81                          ;
 ; stratixv_ram_block    ; 80                          ;
 ;                       ;                             ;
-; Max LUT depth         ; 7.00                        ;
-; Average LUT depth     ; 3.75                        ;
+; Max LUT depth         ; 8.40                        ;
+; Average LUT depth     ; 4.12                        ;
 +-----------------------+-----------------------------+
 
 
@@ -2148,7 +2153,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 +----------------+--------------+
 ; Partition Name ; Elapsed Time ;
 +----------------+--------------+
-; Top            ; 00:00:09     ;
+; Top            ; 00:00:07     ;
 +----------------+--------------+
 
 
@@ -2158,7 +2163,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 16.0.0 Build 211 04/27/2016 SJ Lite Edition
-    Info: Processing started: Thu Dec 15 03:44:30 2016
+    Info: Processing started: Tue Dec 20 17:21:38 2016
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off Xmit -c Xmit
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (20030): Parallel compilation is enabled and will use 2 of the 2 processors detected
@@ -2175,25 +2180,19 @@ Info (12021): Found 2 design units, including 1 entities, in source file out_fsm
     Info (12022): Found design unit 1: out_FSM-rtl File: C:/Users/User/OneDrive/Duke/7_Fall_2016/ECE_559/Transmit_port/out_FSM.vhd Line: 27
     Info (12023): Found entity 1: out_FSM File: C:/Users/User/OneDrive/Duke/7_Fall_2016/ECE_559/Transmit_port/out_FSM.vhd Line: 5
 Info (12021): Found 2 design units, including 1 entities, in source file in_fsm.vhd
-    Info (12022): Found design unit 1: in_FSM-rtl File: C:/Users/User/OneDrive/Duke/7_Fall_2016/ECE_559/Transmit_port/in_FSM.vhd Line: 28
+    Info (12022): Found design unit 1: in_FSM-rtl File: C:/Users/User/OneDrive/Duke/7_Fall_2016/ECE_559/Transmit_port/in_FSM.vhd Line: 30
     Info (12023): Found entity 1: in_FSM File: C:/Users/User/OneDrive/Duke/7_Fall_2016/ECE_559/Transmit_port/in_FSM.vhd Line: 5
-Info (12021): Found 2 design units, including 1 entities, in source file discard_logic.vhd
-    Info (12022): Found design unit 1: discard_logic-arch File: C:/Users/User/OneDrive/Duke/7_Fall_2016/ECE_559/Transmit_port/discard_logic.vhd Line: 17
-    Info (12023): Found entity 1: discard_logic File: C:/Users/User/OneDrive/Duke/7_Fall_2016/ECE_559/Transmit_port/discard_logic.vhd Line: 5
+Warning (12019): Can't analyze file -- file discard_logic.vhd is missing
 Info (12127): Elaborating entity "xmitTop" for the top level hierarchy
-Warning (10541): VHDL Signal Declaration warning at xmitTop.vhd(18): used implicit default value for signal "m_discard_frame" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations. File: C:/Users/User/OneDrive/Duke/7_Fall_2016/ECE_559/Transmit_port/xmitTop.vhd Line: 18
-Warning (10541): VHDL Signal Declaration warning at xmitTop.vhd(19): used implicit default value for signal "m_tx_frame" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations. File: C:/Users/User/OneDrive/Duke/7_Fall_2016/ECE_559/Transmit_port/xmitTop.vhd Line: 19
-Warning (10036): Verilog HDL or VHDL warning at xmitTop.vhd(143): object "empty_hi" assigned a value but never read File: C:/Users/User/OneDrive/Duke/7_Fall_2016/ECE_559/Transmit_port/xmitTop.vhd Line: 143
-Warning (10036): Verilog HDL or VHDL warning at xmitTop.vhd(144): object "overflow_hi" assigned a value but never read File: C:/Users/User/OneDrive/Duke/7_Fall_2016/ECE_559/Transmit_port/xmitTop.vhd Line: 144
-Warning (10036): Verilog HDL or VHDL warning at xmitTop.vhd(150): object "empty_lo" assigned a value but never read File: C:/Users/User/OneDrive/Duke/7_Fall_2016/ECE_559/Transmit_port/xmitTop.vhd Line: 150
-Warning (10036): Verilog HDL or VHDL warning at xmitTop.vhd(151): object "overflow_lo" assigned a value but never read File: C:/Users/User/OneDrive/Duke/7_Fall_2016/ECE_559/Transmit_port/xmitTop.vhd Line: 151
-Info (12128): Elaborating entity "in_FSM" for hierarchy "in_FSM:input_FSM" File: C:/Users/User/OneDrive/Duke/7_Fall_2016/ECE_559/Transmit_port/xmitTop.vhd Line: 174
-Info (12128): Elaborating entity "out_FSM" for hierarchy "out_FSM:output_FSM" File: C:/Users/User/OneDrive/Duke/7_Fall_2016/ECE_559/Transmit_port/xmitTop.vhd Line: 195
-Warning (10631): VHDL Process Statement warning at out_FSM.vhd(159): inferring latch(es) for signal or variable "pop_hi", which holds its previous value in one or more paths through the process File: C:/Users/User/OneDrive/Duke/7_Fall_2016/ECE_559/Transmit_port/out_FSM.vhd Line: 159
-Warning (10631): VHDL Process Statement warning at out_FSM.vhd(159): inferring latch(es) for signal or variable "pop_lo", which holds its previous value in one or more paths through the process File: C:/Users/User/OneDrive/Duke/7_Fall_2016/ECE_559/Transmit_port/out_FSM.vhd Line: 159
-Info (10041): Inferred latch for "pop_lo" at out_FSM.vhd(159) File: C:/Users/User/OneDrive/Duke/7_Fall_2016/ECE_559/Transmit_port/out_FSM.vhd Line: 159
-Info (10041): Inferred latch for "pop_hi" at out_FSM.vhd(159) File: C:/Users/User/OneDrive/Duke/7_Fall_2016/ECE_559/Transmit_port/out_FSM.vhd Line: 159
-Info (12128): Elaborating entity "dataFIFO" for hierarchy "dataFIFO:data_fifo_hi" File: C:/Users/User/OneDrive/Duke/7_Fall_2016/ECE_559/Transmit_port/xmitTop.vhd Line: 217
+Warning (10036): Verilog HDL or VHDL warning at xmitTop.vhd(112): object "out_wren" assigned a value but never read File: C:/Users/User/OneDrive/Duke/7_Fall_2016/ECE_559/Transmit_port/xmitTop.vhd Line: 112
+Warning (10036): Verilog HDL or VHDL warning at xmitTop.vhd(114): object "out_priority" assigned a value but never read File: C:/Users/User/OneDrive/Duke/7_Fall_2016/ECE_559/Transmit_port/xmitTop.vhd Line: 114
+Warning (10036): Verilog HDL or VHDL warning at xmitTop.vhd(130): object "empty_hi" assigned a value but never read File: C:/Users/User/OneDrive/Duke/7_Fall_2016/ECE_559/Transmit_port/xmitTop.vhd Line: 130
+Warning (10036): Verilog HDL or VHDL warning at xmitTop.vhd(131): object "overflow_hi" assigned a value but never read File: C:/Users/User/OneDrive/Duke/7_Fall_2016/ECE_559/Transmit_port/xmitTop.vhd Line: 131
+Warning (10036): Verilog HDL or VHDL warning at xmitTop.vhd(137): object "empty_lo" assigned a value but never read File: C:/Users/User/OneDrive/Duke/7_Fall_2016/ECE_559/Transmit_port/xmitTop.vhd Line: 137
+Warning (10036): Verilog HDL or VHDL warning at xmitTop.vhd(138): object "overflow_lo" assigned a value but never read File: C:/Users/User/OneDrive/Duke/7_Fall_2016/ECE_559/Transmit_port/xmitTop.vhd Line: 138
+Info (12128): Elaborating entity "in_FSM" for hierarchy "in_FSM:input_FSM" File: C:/Users/User/OneDrive/Duke/7_Fall_2016/ECE_559/Transmit_port/xmitTop.vhd Line: 187
+Info (12128): Elaborating entity "out_FSM" for hierarchy "out_FSM:output_FSM" File: C:/Users/User/OneDrive/Duke/7_Fall_2016/ECE_559/Transmit_port/xmitTop.vhd Line: 210
+Info (12128): Elaborating entity "dataFIFO" for hierarchy "dataFIFO:data_fifo_hi" File: C:/Users/User/OneDrive/Duke/7_Fall_2016/ECE_559/Transmit_port/xmitTop.vhd Line: 232
 Info (12128): Elaborating entity "dcfifo" for hierarchy "dataFIFO:data_fifo_hi|dcfifo:dcfifo_component" File: C:/Users/User/OneDrive/Duke/7_Fall_2016/ECE_559/Transmit_port/dataFIFO.vhd Line: 117
 Info (12130): Elaborated megafunction instantiation "dataFIFO:data_fifo_hi|dcfifo:dcfifo_component" File: C:/Users/User/OneDrive/Duke/7_Fall_2016/ECE_559/Transmit_port/dataFIFO.vhd Line: 117
 Info (12133): Instantiated megafunction "dataFIFO:data_fifo_hi|dcfifo:dcfifo_component" with the following parameter: File: C:/Users/User/OneDrive/Duke/7_Fall_2016/ECE_559/Transmit_port/dataFIFO.vhd Line: 117
@@ -2249,7 +2248,7 @@ Info (12128): Elaborating entity "dffpipe_0f9" for hierarchy "dataFIFO:data_fifo
 Info (12021): Found 1 design units, including 1 entities, in source file db/cmpr_f06.tdf
     Info (12023): Found entity 1: cmpr_f06 File: C:/Users/User/OneDrive/Duke/7_Fall_2016/ECE_559/Transmit_port/db/cmpr_f06.tdf Line: 23
 Info (12128): Elaborating entity "cmpr_f06" for hierarchy "dataFIFO:data_fifo_hi|dcfifo:dcfifo_component|dcfifo_obt1:auto_generated|cmpr_f06:rdempty_eq_comp" File: C:/Users/User/OneDrive/Duke/7_Fall_2016/ECE_559/Transmit_port/db/dcfifo_obt1.tdf Line: 83
-Info (12128): Elaborating entity "FIFO_1" for hierarchy "FIFO_1:start_fifo_hi" File: C:/Users/User/OneDrive/Duke/7_Fall_2016/ECE_559/Transmit_port/xmitTop.vhd Line: 232
+Info (12128): Elaborating entity "FIFO_1" for hierarchy "FIFO_1:start_fifo_hi" File: C:/Users/User/OneDrive/Duke/7_Fall_2016/ECE_559/Transmit_port/xmitTop.vhd Line: 246
 Info (12128): Elaborating entity "dcfifo" for hierarchy "FIFO_1:start_fifo_hi|dcfifo:dcfifo_component" File: C:/Users/User/OneDrive/Duke/7_Fall_2016/ECE_559/Transmit_port/FIFO_1.vhd Line: 117
 Info (12130): Elaborated megafunction instantiation "FIFO_1:start_fifo_hi|dcfifo:dcfifo_component" File: C:/Users/User/OneDrive/Duke/7_Fall_2016/ECE_559/Transmit_port/FIFO_1.vhd Line: 117
 Info (12133): Instantiated megafunction "FIFO_1:start_fifo_hi|dcfifo:dcfifo_component" with the following parameter: File: C:/Users/User/OneDrive/Duke/7_Fall_2016/ECE_559/Transmit_port/FIFO_1.vhd Line: 117
@@ -2288,74 +2287,19 @@ Info (12021): Found 1 design units, including 1 entities, in source file db/dffp
     Info (12023): Found entity 1: dffpipe_2f9 File: C:/Users/User/OneDrive/Duke/7_Fall_2016/ECE_559/Transmit_port/db/dffpipe_2f9.tdf Line: 25
 Info (12128): Elaborating entity "dffpipe_2f9" for hierarchy "FIFO_1:start_fifo_hi|dcfifo:dcfifo_component|dcfifo_abt1:auto_generated|alt_synch_pipe_hpl:ws_dgrp|dffpipe_2f9:dffpipe11" File: C:/Users/User/OneDrive/Duke/7_Fall_2016/ECE_559/Transmit_port/db/alt_synch_pipe_hpl.tdf Line: 35
 Warning (12241): 6 hierarchies have connectivity warnings - see the Connectivity Checks report folder
-Warning (13012): Latch out_FSM:output_FSM|pop_lo has unsafe behavior File: C:/Users/User/OneDrive/Duke/7_Fall_2016/ECE_559/Transmit_port/out_FSM.vhd Line: 23
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal out_FSM:output_FSM|my_state.s_init File: C:/Users/User/OneDrive/Duke/7_Fall_2016/ECE_559/Transmit_port/out_FSM.vhd Line: 29
-Warning (13012): Latch out_FSM:output_FSM|pop_hi has unsafe behavior File: C:/Users/User/OneDrive/Duke/7_Fall_2016/ECE_559/Transmit_port/out_FSM.vhd Line: 22
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal out_FSM:output_FSM|my_state.s_init File: C:/Users/User/OneDrive/Duke/7_Fall_2016/ECE_559/Transmit_port/out_FSM.vhd Line: 29
-Warning (13024): Output pins are stuck at VCC or GND
-    Warning (13410): Pin "m_discard_frame[0]" is stuck at GND File: C:/Users/User/OneDrive/Duke/7_Fall_2016/ECE_559/Transmit_port/xmitTop.vhd Line: 18
-    Warning (13410): Pin "m_discard_frame[1]" is stuck at GND File: C:/Users/User/OneDrive/Duke/7_Fall_2016/ECE_559/Transmit_port/xmitTop.vhd Line: 18
-    Warning (13410): Pin "m_discard_frame[2]" is stuck at GND File: C:/Users/User/OneDrive/Duke/7_Fall_2016/ECE_559/Transmit_port/xmitTop.vhd Line: 18
-    Warning (13410): Pin "m_discard_frame[3]" is stuck at GND File: C:/Users/User/OneDrive/Duke/7_Fall_2016/ECE_559/Transmit_port/xmitTop.vhd Line: 18
-    Warning (13410): Pin "m_discard_frame[4]" is stuck at GND File: C:/Users/User/OneDrive/Duke/7_Fall_2016/ECE_559/Transmit_port/xmitTop.vhd Line: 18
-    Warning (13410): Pin "m_discard_frame[5]" is stuck at GND File: C:/Users/User/OneDrive/Duke/7_Fall_2016/ECE_559/Transmit_port/xmitTop.vhd Line: 18
-    Warning (13410): Pin "m_discard_frame[6]" is stuck at GND File: C:/Users/User/OneDrive/Duke/7_Fall_2016/ECE_559/Transmit_port/xmitTop.vhd Line: 18
-    Warning (13410): Pin "m_discard_frame[7]" is stuck at GND File: C:/Users/User/OneDrive/Duke/7_Fall_2016/ECE_559/Transmit_port/xmitTop.vhd Line: 18
-    Warning (13410): Pin "m_discard_frame[8]" is stuck at GND File: C:/Users/User/OneDrive/Duke/7_Fall_2016/ECE_559/Transmit_port/xmitTop.vhd Line: 18
-    Warning (13410): Pin "m_discard_frame[9]" is stuck at GND File: C:/Users/User/OneDrive/Duke/7_Fall_2016/ECE_559/Transmit_port/xmitTop.vhd Line: 18
-    Warning (13410): Pin "m_discard_frame[10]" is stuck at GND File: C:/Users/User/OneDrive/Duke/7_Fall_2016/ECE_559/Transmit_port/xmitTop.vhd Line: 18
-    Warning (13410): Pin "m_discard_frame[11]" is stuck at GND File: C:/Users/User/OneDrive/Duke/7_Fall_2016/ECE_559/Transmit_port/xmitTop.vhd Line: 18
-    Warning (13410): Pin "m_tx_frame[0]" is stuck at GND File: C:/Users/User/OneDrive/Duke/7_Fall_2016/ECE_559/Transmit_port/xmitTop.vhd Line: 19
-    Warning (13410): Pin "m_tx_frame[1]" is stuck at GND File: C:/Users/User/OneDrive/Duke/7_Fall_2016/ECE_559/Transmit_port/xmitTop.vhd Line: 19
-    Warning (13410): Pin "m_tx_frame[2]" is stuck at GND File: C:/Users/User/OneDrive/Duke/7_Fall_2016/ECE_559/Transmit_port/xmitTop.vhd Line: 19
-    Warning (13410): Pin "m_tx_frame[3]" is stuck at GND File: C:/Users/User/OneDrive/Duke/7_Fall_2016/ECE_559/Transmit_port/xmitTop.vhd Line: 19
-    Warning (13410): Pin "m_tx_frame[4]" is stuck at GND File: C:/Users/User/OneDrive/Duke/7_Fall_2016/ECE_559/Transmit_port/xmitTop.vhd Line: 19
-    Warning (13410): Pin "m_tx_frame[5]" is stuck at GND File: C:/Users/User/OneDrive/Duke/7_Fall_2016/ECE_559/Transmit_port/xmitTop.vhd Line: 19
-    Warning (13410): Pin "m_tx_frame[6]" is stuck at GND File: C:/Users/User/OneDrive/Duke/7_Fall_2016/ECE_559/Transmit_port/xmitTop.vhd Line: 19
-    Warning (13410): Pin "m_tx_frame[7]" is stuck at GND File: C:/Users/User/OneDrive/Duke/7_Fall_2016/ECE_559/Transmit_port/xmitTop.vhd Line: 19
-    Warning (13410): Pin "m_tx_frame[8]" is stuck at GND File: C:/Users/User/OneDrive/Duke/7_Fall_2016/ECE_559/Transmit_port/xmitTop.vhd Line: 19
-    Warning (13410): Pin "m_tx_frame[9]" is stuck at GND File: C:/Users/User/OneDrive/Duke/7_Fall_2016/ECE_559/Transmit_port/xmitTop.vhd Line: 19
-    Warning (13410): Pin "m_tx_frame[10]" is stuck at GND File: C:/Users/User/OneDrive/Duke/7_Fall_2016/ECE_559/Transmit_port/xmitTop.vhd Line: 19
-    Warning (13410): Pin "m_tx_frame[11]" is stuck at GND File: C:/Users/User/OneDrive/Duke/7_Fall_2016/ECE_559/Transmit_port/xmitTop.vhd Line: 19
-    Warning (13410): Pin "m_tx_frame[12]" is stuck at GND File: C:/Users/User/OneDrive/Duke/7_Fall_2016/ECE_559/Transmit_port/xmitTop.vhd Line: 19
-    Warning (13410): Pin "m_tx_frame[13]" is stuck at GND File: C:/Users/User/OneDrive/Duke/7_Fall_2016/ECE_559/Transmit_port/xmitTop.vhd Line: 19
-    Warning (13410): Pin "m_tx_frame[14]" is stuck at GND File: C:/Users/User/OneDrive/Duke/7_Fall_2016/ECE_559/Transmit_port/xmitTop.vhd Line: 19
-    Warning (13410): Pin "m_tx_frame[15]" is stuck at GND File: C:/Users/User/OneDrive/Duke/7_Fall_2016/ECE_559/Transmit_port/xmitTop.vhd Line: 19
-    Warning (13410): Pin "m_tx_frame[16]" is stuck at GND File: C:/Users/User/OneDrive/Duke/7_Fall_2016/ECE_559/Transmit_port/xmitTop.vhd Line: 19
-    Warning (13410): Pin "m_tx_frame[17]" is stuck at GND File: C:/Users/User/OneDrive/Duke/7_Fall_2016/ECE_559/Transmit_port/xmitTop.vhd Line: 19
-    Warning (13410): Pin "m_tx_frame[18]" is stuck at GND File: C:/Users/User/OneDrive/Duke/7_Fall_2016/ECE_559/Transmit_port/xmitTop.vhd Line: 19
-    Warning (13410): Pin "m_tx_frame[19]" is stuck at GND File: C:/Users/User/OneDrive/Duke/7_Fall_2016/ECE_559/Transmit_port/xmitTop.vhd Line: 19
-    Warning (13410): Pin "m_tx_frame[20]" is stuck at GND File: C:/Users/User/OneDrive/Duke/7_Fall_2016/ECE_559/Transmit_port/xmitTop.vhd Line: 19
-    Warning (13410): Pin "m_tx_frame[21]" is stuck at GND File: C:/Users/User/OneDrive/Duke/7_Fall_2016/ECE_559/Transmit_port/xmitTop.vhd Line: 19
-    Warning (13410): Pin "m_tx_frame[22]" is stuck at GND File: C:/Users/User/OneDrive/Duke/7_Fall_2016/ECE_559/Transmit_port/xmitTop.vhd Line: 19
-    Warning (13410): Pin "m_tx_frame[23]" is stuck at GND File: C:/Users/User/OneDrive/Duke/7_Fall_2016/ECE_559/Transmit_port/xmitTop.vhd Line: 19
 Info (286030): Timing-Driven Synthesis is running
-Info (17049): 4 registers lost all their fanouts during netlist optimizations.
+Info (17049): 6 registers lost all their fanouts during netlist optimizations.
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
     Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
-Warning (21074): Design contains 13 input pin(s) that do not drive logic
-    Warning (15610): No output dependent on input pin "f_rec_data_valid" File: C:/Users/User/OneDrive/Duke/7_Fall_2016/ECE_559/Transmit_port/xmitTop.vhd Line: 10
-    Warning (15610): No output dependent on input pin "f_ctrl_in[12]" File: C:/Users/User/OneDrive/Duke/7_Fall_2016/ECE_559/Transmit_port/xmitTop.vhd Line: 13
-    Warning (15610): No output dependent on input pin "f_ctrl_in[13]" File: C:/Users/User/OneDrive/Duke/7_Fall_2016/ECE_559/Transmit_port/xmitTop.vhd Line: 13
-    Warning (15610): No output dependent on input pin "f_ctrl_in[14]" File: C:/Users/User/OneDrive/Duke/7_Fall_2016/ECE_559/Transmit_port/xmitTop.vhd Line: 13
-    Warning (15610): No output dependent on input pin "f_ctrl_in[15]" File: C:/Users/User/OneDrive/Duke/7_Fall_2016/ECE_559/Transmit_port/xmitTop.vhd Line: 13
-    Warning (15610): No output dependent on input pin "f_ctrl_in[16]" File: C:/Users/User/OneDrive/Duke/7_Fall_2016/ECE_559/Transmit_port/xmitTop.vhd Line: 13
-    Warning (15610): No output dependent on input pin "f_ctrl_in[17]" File: C:/Users/User/OneDrive/Duke/7_Fall_2016/ECE_559/Transmit_port/xmitTop.vhd Line: 13
-    Warning (15610): No output dependent on input pin "f_ctrl_in[18]" File: C:/Users/User/OneDrive/Duke/7_Fall_2016/ECE_559/Transmit_port/xmitTop.vhd Line: 13
-    Warning (15610): No output dependent on input pin "f_ctrl_in[19]" File: C:/Users/User/OneDrive/Duke/7_Fall_2016/ECE_559/Transmit_port/xmitTop.vhd Line: 13
-    Warning (15610): No output dependent on input pin "f_ctrl_in[20]" File: C:/Users/User/OneDrive/Duke/7_Fall_2016/ECE_559/Transmit_port/xmitTop.vhd Line: 13
-    Warning (15610): No output dependent on input pin "f_ctrl_in[21]" File: C:/Users/User/OneDrive/Duke/7_Fall_2016/ECE_559/Transmit_port/xmitTop.vhd Line: 13
-    Warning (15610): No output dependent on input pin "f_ctrl_in[22]" File: C:/Users/User/OneDrive/Duke/7_Fall_2016/ECE_559/Transmit_port/xmitTop.vhd Line: 13
-    Warning (15610): No output dependent on input pin "f_ctrl_in[23]" File: C:/Users/User/OneDrive/Duke/7_Fall_2016/ECE_559/Transmit_port/xmitTop.vhd Line: 13
-Info (21057): Implemented 1634 device resources after synthesis - the final resource count might be different
+Info (21057): Implemented 1812 device resources after synthesis - the final resource count might be different
     Info (21058): Implemented 38 input pins
     Info (21059): Implemented 43 output pins
-    Info (21061): Implemented 1473 logic cells
+    Info (21061): Implemented 1651 logic cells
     Info (21064): Implemented 80 RAM segments
-Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 65 warnings
-    Info: Peak virtual memory: 960 megabytes
-    Info: Processing ended: Thu Dec 15 03:45:56 2016
-    Info: Elapsed time: 00:01:26
-    Info: Total CPU time (on all processors): 00:02:25
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 9 warnings
+    Info: Peak virtual memory: 958 megabytes
+    Info: Processing ended: Tue Dec 20 17:22:42 2016
+    Info: Elapsed time: 00:01:04
+    Info: Total CPU time (on all processors): 00:01:16
 
 

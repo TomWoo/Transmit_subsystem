@@ -21,7 +21,9 @@ port(
 	out_m_discard_en:		out std_logic;
 	out_wren:				out std_logic;
 	start:					out std_logic;
-	stop:						out std_logic
+	stop:						out std_logic;
+	
+	frame_seq_num_out:	out std_logic_vector(11 downto 0)
 );
 end entity;
 
@@ -35,7 +37,8 @@ architecture rtl of in_FSM is
 	signal usedw_hi		: integer range 0 to 32767;
 	signal usedw_lo		: integer range 0 to 32767;
 	signal mem_avail		: std_logic;
-	signal stop_out		: std_logic;
+	
+	signal frame_seq_num	: integer range 0 to 4095;
 begin
 
 -- Asynchronous signals
@@ -50,19 +53,19 @@ process(all) begin
 		mem_avail <= '0';
 	end if;
 	
-	if(count+1 = frame_len) then -- subtle but important +1!
-		stop_out <= '1';
-	else
-		stop_out <= '0';
-	end if;
+	frame_seq_num_out <= std_logic_vector(to_unsigned(frame_seq_num, 12));
 end process;
 
-process(clk_sys, reset) begin
+process(clk_sys, reset, controli) begin
 	if(reset = '1') then
-		frame_len <= 4095; -- max 12-bit unsigned integer (avoid 0)
+		frame_len <= 0; --to_integer(unsigned(controli(11 downto 0)));
+		
+		frame_seq_num <= 0;
 	elsif(rising_edge(clk_sys)) then
 		if(wrenc = '1') then
 			frame_len <= to_integer(unsigned(controli(11 downto 0)));
+			
+			frame_seq_num <= frame_seq_num + 1;
 		end if;
 	end if;
 end process;
@@ -83,7 +86,7 @@ process(clk_sys, reset) begin
 				count <= 0;
 			end if;
 		when others => -- s_stream or s_discard
-			if(stop_out = '1') then
+			if(stop = '1') then
 				my_state <= s_idle;
 				count <= 0;
 			else
@@ -95,6 +98,12 @@ process(clk_sys, reset) begin
 		datao <= datai;
 		out_priority <= in_priority;
 		start <= wrenc;
+		
+		if(count+1 = frame_len) then -- subtle but important +1!
+			stop <= '1';
+		else
+			stop <= '0';
+		end if;
 	end if;
 end process;
 
@@ -111,8 +120,6 @@ process(all) begin
 		out_m_discard_en <= '1';
 		out_wren <= '0';
 	end case;
-	
-	stop <= stop_out;
 end process;
 
 end architecture;

@@ -62,28 +62,30 @@ initial begin // assigning value of data, data valid, and priority
 	data_in = 8'h00;
 	data_valid = 1'b0;
 	hi_priority_en = 1'b0;
-	#(4*`CLK_SYS);
+	#(40*`CLK_SYS);
 
 	for (i=0; i < num_packets; i=i+1) begin
 		// xFF for intermediate 56 cycles
 		for (j=0; j < packet_length; j=j+1) begin
-			data_in = start_lo;
+			data_in = {i[3:0], j[3:0]};
 			data_valid = 1'b1;
 			hi_priority_en = priority;
 			#(`CLK_SYS);
 			start_lo=(start_lo+1);
 		end
+
+		#(2*`CLK_SYS);
 	end
 end
 
 initial begin // assigning value of ctrl, ctrl valid
-	ctrl_block_in = 24'h200200;
+	ctrl_block_in = 24'h0F0200;
 	ctrl_block_valid = 1'b0;
-	#(4*`CLK_SYS);
+	#(40*`CLK_SYS);
 
 	for (k=0; k < num_packets; k=k+1) begin
 		// turn on control block for first cycle
-		ctrl_block_in = 24'h200200;
+		ctrl_block_in = 24'h0F0200;
 		ctrl_block_valid = 1'b1;
 		#(`CLK_SYS);
 
@@ -91,6 +93,8 @@ initial begin // assigning value of ctrl, ctrl valid
 		ctrl_block_in = 24'h000000;
 		ctrl_block_valid = 1'b0;
 		#((packet_length-1)*`CLK_SYS);
+
+		#(2*`CLK_SYS);
 	end
 end
 

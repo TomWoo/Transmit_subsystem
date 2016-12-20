@@ -31,7 +31,7 @@ architecture rtl of out_FSM is
 	signal count			: integer range 0 to 4095; -- max size of packet in bytes
 	signal is_even			: std_logic;
 	
-	type priority_state is (s_hi, s_lo);
+	type priority_state is (s_off, s_hi, s_lo);
 	signal my_priority_state		: priority_state;
 	
 	signal usedw_hi		: integer range 0 to 32767;
@@ -126,12 +126,14 @@ end process;
 -- Moore machine (my_priority_state)
 process(clk_phy, reset) begin
 	if(reset = '1') then
-		my_priority_state <= s_lo;
+		my_priority_state <= s_off;
 	elsif(rising_edge(clk_phy)) then
 		if(start_hi_in = '1' and usedw_hi > 0) then
 			my_priority_state <= s_hi;
-		elsif(start_lo_in = '1') then
+		elsif(start_lo_in = '1' and usedw_lo > 0) then
 			my_priority_state <= s_lo;
+		elsif(start_lo_in = '1') then
+			my_priority_state <= s_off;
 		end if;
 	end if;
 end process;
@@ -143,12 +145,15 @@ process(all) begin
 		phy_data_out <= X"0";
 		phy_tx_en <= '0';
 		xmit_done_out <= '0';
-		if(usedw_hi > 0) then
+		if(usedw_hi > 0 and start_hi_in = '0') then
 			pop_hi <= '1';
 			pop_lo <= '0';
-		elsif(usedw_lo > 0) then
+		elsif(usedw_lo > 0 and start_lo_in = '0') then
 			pop_hi <= '0';
 			pop_lo <= '1';
+		else
+			pop_hi <= '0';
+			pop_lo <= '0';
 		end if;
 	when s_wait_start | s_wait_96 =>
 		phy_data_out <= X"0";
@@ -158,13 +163,13 @@ process(all) begin
 		pop_lo <= '0';
 	when s_preamble =>
 		phy_data_out <= X"A";
-		phy_tx_en <= '0';
+		phy_tx_en <= '1';
 		xmit_done_out <= '0';
 		pop_hi <= '0';
 		pop_lo <= '0';
 	when s_SFD =>
 		phy_data_out <= X"B";
-		phy_tx_en <= '0';
+		phy_tx_en <= '1';
 		xmit_done_out <= '0';
 		pop_hi <= '0';
 		pop_lo <= '0';
@@ -179,9 +184,12 @@ process(all) begin
 		if(my_priority_state = s_hi) then
 			pop_hi <= is_even;
 			pop_lo <= '0';
-		else -- s_lo
+		elsif(my_priority_state = s_lo) then
 			pop_hi <= '0';
 			pop_lo <= is_even;
+		else
+			pop_hi <= '0';
+			pop_lo <= '0';
 		end if;
 	end case;
 end process;
