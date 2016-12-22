@@ -141,7 +141,7 @@ end process;
 -- Output signals
 process(all) begin
 	case my_state is
-	when s_init | s_gap =>
+	when s_init =>
 		phy_data_out <= X"0";
 		phy_tx_en <= '0';
 		xmit_done_out <= '0';
@@ -155,6 +155,12 @@ process(all) begin
 			pop_hi <= '0';
 			pop_lo <= '0';
 		end if;
+	when s_gap =>
+		phy_data_out <= X"0";
+		phy_tx_en <= '0';
+		xmit_done_out <= '0';
+		pop_hi <= '0';
+		pop_lo <= '0';
 	when s_wait_start | s_wait_96 =>
 		phy_data_out <= X"0";
 		phy_tx_en <= '0';
@@ -180,14 +186,16 @@ process(all) begin
 			phy_data_out <= data_in(7 downto 4);
 		end if;
 		phy_tx_en <= '1';
-		xmit_done_out <= stop_in;
 		if(my_priority_state = s_hi) then
+			xmit_done_out <= stop_in;
 			pop_hi <= is_even;
 			pop_lo <= '0';
 		elsif(my_priority_state = s_lo) then
+			xmit_done_out <= stop_in;
 			pop_hi <= '0';
 			pop_lo <= is_even;
 		else
+			xmit_done_out <= stop_in;
 			pop_hi <= '0';
 			pop_lo <= '0';
 		end if;

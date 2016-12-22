@@ -65,7 +65,7 @@ initial begin // assigning value of data, data valid, and priority
 	data_in = 8'h00;
 	data_valid = 1'b0;
 	hi_priority_en = 1'b1;
-	#(6*`CLK_SYS);
+	#(60*`CLK_SYS);
 
 	for (i=0; i < num_loops; i=i+1) begin
 		for (n = 0; n < num_hi; n=n+1) begin
@@ -81,13 +81,14 @@ initial begin // assigning value of data, data valid, and priority
 		start_lo=(start_lo+1);
 		#((packet_length)*`CLK_SYS);
 		end
+		#(`CLK_SYS);
 	end
 end
 
 initial begin // assigning value of ctrl, ctrl valid
 	ctrl_block_in = 24'hFFF;
 	ctrl_block_valid = 1'b0;
-	#(6*`CLK_SYS);
+	#(60*`CLK_SYS);
 
 	for (j=0; j < num_loops; j=j+1) begin
 		for (l=0; l < num_hi; l=l+1) begin
@@ -109,7 +110,7 @@ initial begin // assigning value of ctrl, ctrl valid
 		// turn off control block again
 		ctrl_block_in = 24'h000000;
 		ctrl_block_valid = 1'b0;
-		#((packet_length-1)*`CLK_SYS);
+		#((packet_length)*`CLK_SYS);
 		end
 	end
 end

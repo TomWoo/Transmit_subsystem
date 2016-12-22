@@ -78,10 +78,10 @@ process(clk_sys, reset) begin
 	elsif(rising_edge(clk_sys)) then
 		case my_state is
 		when s_idle =>
-			if(wrenc = '1' and mem_avail = '1') then
+			if(wrend = '1' and mem_avail = '1') then
 				my_state <= s_stream;
 				count <= 0;
-			elsif(wrenc = '1') then
+			elsif(wrend = '1') then
 				my_state <= s_discard;
 				count <= 0;
 			end if;
@@ -99,7 +99,7 @@ process(clk_sys, reset) begin
 		out_priority <= in_priority;
 		start <= wrenc;
 		
-		if(count+1 = frame_len) then -- subtle but important +1!
+		if(count = frame_len-2) then -- subtle but important -2!
 			stop <= '1';
 		else
 			stop <= '0';
